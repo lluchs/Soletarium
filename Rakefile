@@ -95,6 +95,7 @@ task :template => build('data')
 jsonTask 'templates/*', build('data/templates.json'), :template
 
 desc 'Creates general JSON file'
+task :general => build('data')
 jsonTask 'data/*.yaml', build('data/general.json'), :general
 
 desc 'Copys libs'
@@ -115,7 +116,7 @@ end
 desc 'Copys static files'
 task :files => [build('css'), build('images')]
 copyTask 'css/*', 'css', :files
-copyTask 'images/*', 'images', :files
+copyTask 'images/*.*', 'images', :files
 copyTask 'index.html', '', :files
 
 task :default => [:coffee, :lib, :general, :lang, :template, :files]
