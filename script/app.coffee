@@ -25,7 +25,7 @@ $.getJSON 'data/templates.json', (data) ->
 
 # setzt die Position eines Planeten, berücksichtigt Offset
 setPlanetPos = (i, x, y) ->
-	e = $('#planets').children().eq(i)
+	e = $('#planets .planet').eq(i)
 	e.css('left', "#{x - general.planets[i].offset.x}px") if x
 	e.css('top', "#{y - general.planets[i].offset.y}px") if y
 
@@ -36,7 +36,7 @@ positionPlanets = ->
 	# fester Abstand links/rechts
 	padding = general.pdata.padding
 	width = $('#planets').width() - padding.left - padding.right
-	$('#planets').children().each (i, e) ->
+	$('#planets .planet').each (i, e) ->
 		# prozentuale Position
 		xpos = padding.left + general.planets[i].xpos * width / 100
 		setPlanetPos(i, xpos, ypos)
