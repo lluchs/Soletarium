@@ -64,6 +64,10 @@ nav#dimension {
 	-webkit-transform: rotate(-70deg);
 }
 
+.planet .moon.name {
+	font-size: 75%;
+}
+
 #main > footer {
 	position: absolute;
 	z-index: 10;
