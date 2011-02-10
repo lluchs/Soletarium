@@ -29,11 +29,17 @@ setPlanetPos = (i, x, y) ->
 	e.css('left', "#{x - general.planets[i].offset.x}px") if x
 	e.css('top', "#{y - general.planets[i].offset.y}px") if y
 
-# setzt die vertikale Position der Planeten
+# setzt die dynamische Position der Planeten
 positionPlanets = ->
-	pos = ($('#planets').height() - $('#main > footer').height()) / 1.5
+	# Y-Position: 3/2 des verfügbaren Platzes
+	ypos = ($('#planets').height() - $('#main > footer').height()) / 1.5
+	# fester Abstand links/rechts
+	padding = general.pdata.padding
+	width = $('#planets').width() - padding.left - padding.right
 	$('#planets').children().each (i, e) ->
-		setPlanetPos(i, 0, pos)
+		# prozentuale Position
+		xpos = padding.left + general.planets[i].xpos * width / 100
+		setPlanetPos(i, xpos, ypos)
 
 # Sammy-Helper: Language
 Sammy.Application::lget = (path, fn) ->
@@ -68,14 +74,12 @@ app = $.sammy '#container', ->
 		
 		captions = $('#planets .name')
 		for i, p of general.planets
-			# x-pos
-			setPlanetPos(i, p.xpos)
 			# caption
 			e = captions.eq(i)
 			e.css('left', "#{general.planets[i].caption.x}px")
 			e.css('top', "#{-e.height() + general.planets[i].caption.y}px")
 			
-		# y-pos
+		# Position
 		do positionPlanets
 		$(window).resize(positionPlanets)
 					
