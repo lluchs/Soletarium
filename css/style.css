@@ -21,6 +21,7 @@ a {
 
 #main > header {
 	position: absolute;
+	z-index: 100;
 	top: 2em;
 	width: 100%;
 	text-align: center;
@@ -36,12 +37,23 @@ nav#dimension {
 }
 
 #planets {
-	background-image: url(../images/Background.jpg);
+	background-image: url(../images/bg.png);
 	background-color: black;
+}
+
+#bg-sun {
+	position: absolute;
+	left: 0;
+}
+
+#bg-end {
+	position: absolute;
+	right: 0;
 }
 
 .planet {
 	position: absolute;
+	z-index: 0;
 }
 
 .planet .name {
@@ -54,6 +66,7 @@ nav#dimension {
 
 #main > footer {
 	position: absolute;
+	z-index: 10;
 	width: 100%;
 	bottom: 0;
 	
