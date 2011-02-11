@@ -41,14 +41,20 @@ nav#dimension {
 	background-color: black;
 }
 
-#bg-sun {
+#planets .bg {
 	position: absolute;
-	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+}
+
+#bg-sun {
+	background-image: url(../images/bg-sun.png);
 }
 
 #bg-end {
-	position: absolute;
-	right: 0;
+	background-position: top right;
+	background-image: url(../images/bg-end.png);
 }
 
 .planet {
