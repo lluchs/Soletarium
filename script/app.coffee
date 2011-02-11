@@ -71,11 +71,6 @@ app = $.sammy '#container', ->
 		
 		# Planetenanzeige
 		$('#content').html @hb(templates.planets, {planets: $.extend(true, [], general.planets, lang.planets)})
-		
-		captions = $('#planets .name').each ->
-			e = $(this)
-			top = e.css('top')
-			e.css('top', "#{top[0..top.length-3] - e.height()}px")
 			
 		# Position
 		do positionPlanets
