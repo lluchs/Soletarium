@@ -59,22 +59,55 @@ Sammy.Application::lget = (path, fn) ->
 				currentLang = l
 				fn.apply(this, arguments)
 		
-		
+Sammy.Application::dlget = (path, fn) ->
+	# Route speichern
+	@droutes or= {}
+	@droutes[path] = fn
+	# momentaner Pfad
+	@dpath or= []
+	
+	app = this
+	
+	# Route erstellen
+	@lget path, ->
+		# Pfad extrahieren
+		p = path.split '/'
+		# Unterschied feststellen
+		diff = 0
+		while app.dpath[diff] is p[diff]
+			++diff
+		# Unterschiede angleichen
+		# Zunächst überflüssige Teile entfernen
+		if diff isnt 0
+			for i in [app.dpath.length-1..diff]
+				# Pfad umwandeln, um eventuell vorhandene Route zu finden
+				app.droutes[(app.dpath[j] for j in [0..i]).join '/']?.hide?()
+		# Dann evtl. nötige Teile erstellen
+		if diff isnt p.length-1
+			for i in [diff...p.length-1]
+				# Pfad umwandeln, um eventuell vorhandene Route zu finden
+				app.droutes[(p[j] for j in [0..i]).join '/']?.show()
+		# Neuer Pfad speichern
+		app.dpath = p
+		# jetzt die eigentliche Funktion aufrufen
+		fn.show.apply(this, arguments)
+
 # das App
 app = $.sammy '#container', ->
 	@use Sammy.Handlebars, 'hb'
 	@template_engine = 'hb'
 	
-	@lget 'main', ->
-		# Header/Footer
-		@$element().html @hb(templates.main, lang)
-		
-		# Planetenanzeige
-		$('#content').html @hb(templates.planets, {planets: $.extend(true, [], general.planets, lang.planets)})
+	@dlget 'main', 
+		show: ->
+			# Header/Footer
+			@$element().html @hb(templates.main, lang)
 			
-		# Position
-		do positionPlanets
-		$(window).resize(positionPlanets)
+			# Planetenanzeige
+			$('#content').html @hb(templates.planets, {planets: $.extend(true, [], general.planets, lang.planets)})
+				
+			# Position
+			do positionPlanets
+			$(window).resize(positionPlanets)
 					
 do go = ->
 	if general? and templates?
