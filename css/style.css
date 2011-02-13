@@ -62,6 +62,10 @@ nav#dimension {
 	z-index: 0;
 }
 
+.planet:hover {
+	cursor: pointer;
+}
+
 .planet .name {
 	position: absolute;
 	transform: rotate(-70deg);
@@ -72,6 +76,52 @@ nav#dimension {
 
 .planet .moon.name {
 	font-size: 75%;
+}
+
+/* Planetendetail */
+.planetdetail {
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	right: 200px;
+	bottom: 300px;
+	background-color: black;
+	border-radius: 10px;
+}
+
+.planetdetail > div {
+	display: inline-block;
+	vertical-align: top;
+	height: 100%;
+}
+
+.planetdetail > .text {
+	width: 45%;
+}
+
+.planetdetail > .image {
+	width: 45%;
+	border-left: solid 1px grey;
+}
+
+.planetdetail > .rbar {
+	width: 20px;
+	position: relative;
+}
+
+.planetdetail > .rbar h1 {
+	-webkit-transform-origin: center left;
+	transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	position: absolute;
+	top: 0;
+}
+
+.planetdetail > .rbar a {
+	position: absolute;
+	bottom: 0;
 }
 
 #main > footer {

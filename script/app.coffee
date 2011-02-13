@@ -91,6 +91,7 @@ Sammy.Application::dlget = (path, fn) ->
 
 # das App
 app = $.sammy '#container', ->
+	@raise_errors = true
 	@use Sammy.Handlebars, 'hb'
 	@template_engine = 'hb'
 	
@@ -100,12 +101,33 @@ app = $.sammy '#container', ->
 			@$element().html @hb(templates.main, lang)
 			
 			# Planetenanzeige
-			$('#content').html @hb(templates.planets, {planets: $.extend(true, [], general.planets, lang.planets)})
+			$('#content').html @hb(templates.planets, {lang: currentLang, planets: $.extend(true, [], general.planets, lang.planets)})
 				
 			# Position
 			do positionPlanets
 			$(window).resize(positionPlanets)
-					
+	
+	# Planetendetails
+	@dlget 'main/planet/:planet',
+		show: ->
+			# id herausfinden
+			for id, pdata of general.planets
+				if pdata.id is @params.planet
+					break
+				else
+					id = null
+			# TODO: error
+			return unless id?
+			
+			nid = general.planets[id].id
+			$('#content').append @hb templates.planetdetail, 
+				title: lang.planets[id].name
+				lang: currentLang
+				text: lang.detail[nid]
+				image: "images/#{nid}.png"
+		hide: ->
+			$('.planetdetail').remove()
+	
 do go = ->
 	if general? and templates?
 		app.run '#/de/main'
