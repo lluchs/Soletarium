@@ -82,15 +82,12 @@ Sammy.Application::dlget = (path, fn) ->
 			for i in [app.dpath.length-1..diff]
 				# Pfad umwandeln, um eventuell vorhandene Route zu finden
 				app.droutes[(app.dpath[j] for j in [0..i]).join '/']?.hide?()
-		# Dann evtl. nötige Teile erstellen
-		if diff isnt p.length-1
-			for i in [diff...p.length-1]
-				# Pfad umwandeln, um eventuell vorhandene Route zu finden
-				app.droutes[(p[j] for j in [0..i]).join '/']?.show()
+		# Dann nötige Teile erstellen (inklusive Funktion des aktuellen Pfads)
+		for i in [diff...p.length]
+			# Pfad umwandeln, um eventuell vorhandene Route zu finden
+			app.droutes[(p[j] for j in [0..i]).join '/']?.show.apply(this, arguments)
 		# Neuer Pfad speichern
 		app.dpath = p
-		# jetzt die eigentliche Funktion aufrufen
-		fn.show.apply(this, arguments)
 
 # das App
 app = $.sammy '#container', ->
