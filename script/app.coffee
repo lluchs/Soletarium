@@ -74,8 +74,10 @@ Sammy.Application::dlget = (path, fn) ->
 		p = path.split '/'
 		# Unterschied feststellen
 		diff = 0
-		while app.dpath[diff] is p[diff]
-			++diff
+		if app.dpath.toString() is p.toString()
+			diff = p.length - 2
+		else
+			++diff while app.dpath[diff] is p[diff]
 		# Unterschiede angleichen
 		# Zunächst überflüssige Teile entfernen
 		if diff isnt 0
