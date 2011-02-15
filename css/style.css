@@ -5,6 +5,7 @@ article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section {
 
 html, body, #container, #main, #content, #planets {
 	height: 100%;
+	min-height: 900px;
 }
 
 body {
@@ -17,6 +18,10 @@ body {
 
 a {
 	color: white;
+}
+
+#main {
+	position: relative;
 }
 
 #main > header {
@@ -110,6 +115,9 @@ nav#dimension {
 }
 
 .planetdetail > .rbar h1 {
+	transform-origin: center left;
+	-o-transform-origin: center left;
+	-moz-transform-origin: center left;
 	-webkit-transform-origin: center left;
 	transform: rotate(90deg);
 	-o-transform: rotate(90deg);
