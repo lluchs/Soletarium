@@ -102,6 +102,9 @@ nav#dimension {
 
 .planetdetail > .text {
 	width: 45%;
+	margin: 1em;
+	height: 90%;
+	overflow: auto;
 }
 
 .planetdetail > .image {
@@ -111,7 +114,9 @@ nav#dimension {
 
 .planetdetail > .rbar {
 	width: 20px;
-	position: relative;
+	position: absolute;
+	right: 0;
+	bottom: 1em;
 }
 
 .planetdetail > .rbar h1 {
