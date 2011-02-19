@@ -99,7 +99,8 @@ class Deproute
 	# run it!
 	run: (defaultRoute) ->
 		location.hash or= defaultRoute
-		window.onhashchange = => @runHash
+		app = this
+		window.addEventListener 'hashchange', (-> app.runHash.apply app), false
 		do @runHash
 
 # export
