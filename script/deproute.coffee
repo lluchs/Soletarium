@@ -3,11 +3,11 @@ class Queue
 	constructor: ->
 		@queue = []
 		@waiting = false
-	add: (fn) ->
+	add: (fn, ths, args) ->
 		if @waiting
-			@queue.push fn
+			@queue.push [fn, ths, args]
 		else
-			do fn
+			fn.apply ths, args
 	
 	pause: ->
 		@waiting = true
@@ -15,7 +15,7 @@ class Queue
 	continue: ->
 		@waiting = false
 		for i, fn of @queue
-			do fn
+			fn[0].apply fn[1], fn[2]
 			if @waiting
 				@queue = @queue[i...@queue.length]
 				break
@@ -47,7 +47,7 @@ class Deproute
 			# add function to the queue
 			fn = @getRoute(path[0..i])?.show
 			if fn?
-				@queue.add => fn.apply this, [@param]
+				@queue.add fn, this, [@param]
 		# Neuer Pfad speichern
 		@current = path
 		# debug
