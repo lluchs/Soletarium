@@ -107,7 +107,9 @@ nav#dimension {
 	width: 100%;
 	height: 2.2em;
 	box-sizing: border-box;
-	background-color: red;
+	background-color: #811616;
+	background-image: url('../images/tabbg.png');
+	background-repeat: repeat-x;
 	border-top-left-radius: 10px;
 	padding-left: 10px;
 }
@@ -123,6 +125,8 @@ nav#dimension {
 	height: 2.2em;
 	list-style-type: none;
 	white-space: nowrap;
+	background-image: url('../images/tabbg.png');
+	background-repeat: repeat-x;
 }
 
 .planetdetail .tabs a {
