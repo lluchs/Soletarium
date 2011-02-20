@@ -94,27 +94,71 @@ nav#dimension {
 	border-radius: 10px;
 }
 
-.planetdetail > div {
-	display: inline-block;
-	vertical-align: top;
-	height: 100%;
+.planetdetail > .left {
+	position: absolute;
+	top: 0;
+	right: 3em;
+	bottom: 0;
+	left: 0;
 }
 
-.planetdetail > .text {
-	width: 45%;
-	margin: 1em;
-	height: 90%;
+.planetdetail .tabs {
+	position: relative;
+	width: 100%;
+	height: 2.2em;
+	box-sizing: border-box;
+	background-color: red;
+	border-top-left-radius: 10px;
+	padding-left: 10px;
+}
+
+.planetdetail .tabs > ul {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 0;
+}
+
+.planetdetail .tabs .tab {
+	float: left;
+	height: 2.2em;
+	list-style-type: none;
+	white-space: nowrap;
+}
+
+.planetdetail .tabs a {
+	float: left;
+	padding: 0.5em 1em;
+}
+
+.planetdetail .content {
+	position: absolute;
+	top: 2.5em;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.planetdetail .text {
+	position: absolute;
+	top: 2em;
+	right: 350px;
+	bottom: 2em;
+	left: 1.5em;
 	overflow: auto;
 }
 
-.planetdetail > .image {
-	width: 45%;
-	border-left: solid 1px grey;
+.planetdetail .image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 350px;
 }
 
 .planetdetail > .rbar {
-	width: 20px;
+	width: 3em;
 	position: absolute;
+	top: 0;
 	right: 0;
 	bottom: 1em;
 }
@@ -128,12 +172,15 @@ nav#dimension {
 	-o-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-webkit-transform: rotate(90deg);
+	margin: 0;
 	position: absolute;
 	top: 0;
+	left: 0.75em;
 }
 
 .planetdetail > .rbar a {
 	position: absolute;
+	right: 1.5em;
 	bottom: 0;
 }
 

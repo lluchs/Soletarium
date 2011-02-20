@@ -75,14 +75,32 @@ app = new Deproute
 									# TODO: error
 									return unless id?
 									
-									nid = general.planets[id].id
+									@currentPlanet = planet
+									
+									# Tabs auslesen
+									tabs = []
+									for tdata in lang.detail[planet].meta
+										tabs.push
+											style: "background-color: #{tdata.color}"
+											location: "#{location.hash.match(/(.+\/planet\/\w+)/)[0]}/#{tdata.id}"
+											title: tdata.title or tdata.id
+									
+									# HTML generieren und einsetzen
 									$('#content').append interpolate templates.planetdetail, 
 										title: lang.planets[id].name
+										tabs: tabs
 										lang: currentLang
-										text: lang.detail[nid]
-										image: "images/#{nid}.png"
+										text: 'Platzhalter'
+										image: "images/#{planet}.png"
 								hide: ->
 									$('.planetdetail').remove()
+								sub:
+									':tab':
+										show: (tab) ->
+											text = lang.detail[@currentPlanet][tab]
+											# TODO: error
+											return unless text?
+											$('.planetdetail .text').html text
 window.app = app # export
 do go = ->
 	if general? and templates?
