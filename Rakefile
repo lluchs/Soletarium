@@ -41,7 +41,7 @@ def jsonTask srcGlob, targetFile, taskSymbol, baseDir = nil
 				end
 				
 				# first slice out the base dir, then scan for dir names
-				f.slice(/#{baseDir}\/(.+)$/, 1).scan(/(.+)\//) do |dir|
+				f.slice(/#{baseDir}\/(.+)$/, 1).scan(/(.+?)\//) do |dir|
 					# move pos deeper
 					pos = doDir dir, pos
 				end
