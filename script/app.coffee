@@ -9,7 +9,29 @@ $.getJSON 'data/general.json', (data) ->
 	general = data
 $.getJSON 'data/templates.json', (data) ->
 	templates = data
-	
+
+# Klassen
+
+# Tab-Bilderrotation
+class TabMedia
+	constructor: (@media) ->
+		@pos = 0
+		@image = $('.planetdetail .image')
+		do @show
+		@image.children('.back').click => @back
+		@image.children('.forward').click => @forward
+	show: ->
+		@image.children('img').attr 'src', "images/#{@media[@pos].img}"
+		@image.children('.caption').text @media[@pos].caption
+	back: ->
+		--@pos
+		@pos = @media.length-1 if @pos < 0
+		do @show
+	forward: ->
+		++@pos
+		@pos = 0 if @pos is @media.lenght
+		do @show
+
 # Funktionen
 
 # wendet das Template an
@@ -35,6 +57,19 @@ positionPlanets = ->
 		xpos = padding.left + general.planets[i].xpos * width / 100
 		setPlanetPos(i, xpos, ypos)
 
+# gibt den Index zurück
+getIndex = (id, obj) ->
+	for index, data of obj
+		if data.id is id
+			break
+		else
+			index = null
+	return index
+		
+# erweitert die Tabs des gegeben Planets um allgemeine Daten
+extendDetailTab = (tdata, planet) ->
+	$.extend true, tdata, general.detail.all[tdata.id], general.detail.planets[planet][tdata.id]
+		
 # das App
 app = new Deproute
 	':lang':
@@ -66,23 +101,21 @@ app = new Deproute
 						sub:
 							':planet':
 								show: (planet) ->
-									# id herausfinden
-									for id, pdata of general.planets
-										if pdata.id is planet
-											break
-										else
-											id = null
+									# index herausfinden
+									id = getIndex planet, general.planets
 									# TODO: error
 									return unless id?
 									
 									@currentPlanet = planet
+									loc = location.hash.match(/.+\/planet\/\w+/)[0]
 									
 									# Tabs auslesen
 									tabs = []
 									for tdata in lang.detail[planet].meta
+										tdata = extendDetailTab tdata, planet
 										tabs.push
 											style: "background-color: #{tdata.color}"
-											location: "#{location.hash.match(/(.+\/planet\/\w+)/)[0]}/#{tdata.id}"
+											location: "#{loc}/#{tdata.id}"
 											title: tdata.title or tdata.id
 									
 									# HTML generieren und einsetzen
@@ -90,8 +123,10 @@ app = new Deproute
 										title: lang.planets[id].name
 										tabs: tabs
 										lang: currentLang
-										text: 'Platzhalter'
-										image: "images/#{planet}.png"
+									
+									# bereits ein Tab aufgerufen?
+									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
+										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
 									$('.planetdetail').remove()
 								sub:
@@ -100,7 +135,11 @@ app = new Deproute
 											text = lang.detail[@currentPlanet][tab]
 											# TODO: error
 											return unless text?
-											$('.planetdetail .text').html text
+											$('.planetdetail .content').html interpolate templates.planetdetailcontent,
+												text: text
+											tabs = lang.detail[@currentPlanet].meta
+											t = extendDetailTab tabs[getIndex tab, tabs], @currentPlanet
+											@tabMedia = new TabMedia t.media
 window.app = app # export
 do go = ->
 	if general? and templates?

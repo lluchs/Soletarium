@@ -8,12 +8,6 @@
 			</ul>
 		</div>
 		<div class="content">
-			<div class="text">
-				{{{text}}}
-			</div>
-			<div class="image">
-				<img src="{{image}}" alt="{{title}}">
-			</div>
 		</div>
 	</div>
 	<div class="rbar">
