@@ -27,6 +27,20 @@ def copyTask srcGlob, targetDirSuffix, taskSymbol
 	end
 end
 
+# Task: copy files while preserving directory structure
+def dirCopyTask srcGlob, targetDirSuffix, baseDir, taskSymbol
+	targetDir = File.join BUILD_DIR, targetDirSuffix
+	FileList[srcGlob].each do |f|
+		target = File.join targetDir, f.slice(/#{baseDir}\/(.+)$/, 1)
+		file target => [f] do |t|
+			dir = File.dirname target
+			mkdir_p dir unless File.directory? dir
+			cp f, target
+		end
+		task taskSymbol => target
+	end
+end
+
 # Task: copy content of files into a JSON-file
 def jsonTask srcGlob, targetFile, taskSymbol, baseDir = nil
 	task taskSymbol => targetFile
@@ -116,7 +130,7 @@ end
 desc 'Copys static files'
 task :files => [build('css'), build('images')]
 copyTask 'css/*', 'css', :files
-copyTask 'images/*.*', 'images', :files
+dirCopyTask 'images/**/*.*', 'images', 'images', :files
 copyTask 'index.html', '', :files
 
 task :default => [:coffee, :lib, :general, :lang, :template, :files]
