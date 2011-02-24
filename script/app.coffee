@@ -14,14 +14,14 @@ $.getJSON 'data/templates.json', (data) ->
 
 # Tab-Bilderrotation
 class TabMedia
-	constructor: (@media) ->
+	constructor: (@media, @planet) ->
 		@pos = 0
 		@image = $('.planetdetail .image')
 		do @show
 		@image.children('.back').click => @back
 		@image.children('.forward').click => @forward
 	show: ->
-		@image.children('img').attr 'src', "images/#{@media[@pos].img}"
+		@image.children('img').attr 'src', "images/tab/#{@planet}/#{@media[@pos].img}"
 		@image.children('.caption').text @media[@pos].caption
 	back: ->
 		--@pos
@@ -29,7 +29,7 @@ class TabMedia
 		do @show
 	forward: ->
 		++@pos
-		@pos = 0 if @pos is @media.lenght
+		@pos = 0 if @pos is @media.length
 		do @show
 
 # Funktionen
@@ -139,7 +139,7 @@ app = new Deproute
 												text: text
 											tabs = lang.detail[@currentPlanet].meta
 											t = extendDetailTab tabs[getIndex tab, tabs], @currentPlanet
-											@tabMedia = new TabMedia t.media
+											@tabMedia = new TabMedia t.media, @currentPlanet
 window.app = app # export
 do go = ->
 	if general? and templates?

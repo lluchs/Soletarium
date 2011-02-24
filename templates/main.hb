@@ -2,7 +2,7 @@
 {{#header}}
 	<header>
 		<div>
-			<img src="images/{{logo}}" alt="Soletarium - {{subtitle}}">
+			<img src="images/layout/{{logo}}" alt="Soletarium - {{subtitle}}">
 		</div>
 		<nav id="dimension">
 			<a href="#">2D</a>
