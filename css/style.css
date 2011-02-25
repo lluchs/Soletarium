@@ -54,12 +54,12 @@ nav#dimension {
 }
 
 #bg-sun {
-	background-image: url(../images/layout/bg-sun.png);
+	background: url(../images/layout/bg-sun.svg);
 }
 
 #bg-end {
 	background-position: top right;
-	background-image: url(../images/layout/bg-end.png);
+	background: url(../images/layout/bg-end.svg);
 }
 
 .planet {
