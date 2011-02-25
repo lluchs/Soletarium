@@ -162,18 +162,21 @@ nav#dimension {
 .planetdetail .image > img {
 	max-width: 100%;
 	max-height: 100%;
+	cursor: pointer;
 }
 
 .planetdetail .image > .back {
 	position: absolute;
 	top: 40%;
 	left: 0;
+	cursor: pointer;
 }
 
 .planetdetail .image > .forward {
 	position: absolute;
 	top: 40%;
 	right: 0;
+	cursor: pointer;
 }
 
 .planetdetail .image > .caption {
