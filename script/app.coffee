@@ -21,7 +21,9 @@ class TabMedia
 		@image.children('.back').click => @back
 		@image.children('.forward').click => @forward
 	show: ->
-		@image.children('img').attr 'src', "images/tab/#{@planet}/#{@media[@pos].img}"
+		@image.children('img').attr('src', "images/tab/#{@planet}/#{@media[@pos].img}")
+		                      .unbind('click')
+							  .click => window.open("images/tab/#{@planet}/#{@media[@pos].big}", 'fullscreen') if @media[@pos].big
 		@image.children('.caption').text @media[@pos].caption
 	back: ->
 		--@pos
