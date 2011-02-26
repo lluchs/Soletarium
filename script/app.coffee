@@ -18,8 +18,8 @@ class TabMedia
 		@pos = 0
 		@image = $('.planetdetail .image')
 		do @show
-		@image.children('.back').click => @back
-		@image.children('.forward').click => @forward
+		@image.children('.back').click => do @back
+		@image.children('.forward').click => do @forward
 	show: ->
 		@image.children('img').attr('src', "images/tab/#{@planet}/#{@media[@pos].img}")
 		                      .unbind('click')
