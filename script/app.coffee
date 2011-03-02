@@ -17,6 +17,10 @@ class TabMedia
 	constructor: (@media, @planet) ->
 		@pos = 0
 		@image = $('.planetdetail .image')
+		if not @media
+			do @image.hide
+			$('.planetdetail .text').css 'right', 0
+			return
 		do @show
 		@image.children('.back').click => do @back
 		@image.children('.forward').click => do @forward
