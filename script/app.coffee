@@ -1,4 +1,4 @@
-﻿# Gespeicherte Daten
+# Gespeicherte Daten
 general = null
 templates = null
 compiled = {}
@@ -21,9 +21,9 @@ class TabMedia
 		@image.children('.back').click => do @back
 		@image.children('.forward').click => do @forward
 	show: ->
-		@image.children('img').attr('src', "images/tab/#{@planet}/#{@media[@pos].img}")
+		@image.children('img').attr('src', getPlanetImage(@media[@pos], @planet, 'med'))
 		                      .unbind('click')
-							  .click => window.open("images/tab/#{@planet}/#{@media[@pos].big}", 'fullscreen') if @media[@pos].big
+							  .click => window.open(getPlanetImage(@media[@pos], @planet, 'high'), 'fullscreen')
 		@image.children('.caption').text @media[@pos].caption
 	back: ->
 		--@pos
@@ -58,6 +58,11 @@ positionPlanets = ->
 		# prozentuale Position
 		xpos = padding.left + general.planets[i].xpos * width / 100
 		setPlanetPos(i, xpos, ypos)
+
+# gibt den Bildpfad zurück
+getPlanetImage = (img, planet, res) ->
+	auto = (r) -> "#{img.auto}_#{r[0].toUpperCase() + r[1...r.length]}Res.jpg"
+	return "images/tab/#{planet}/#{img[res] or auto(res)}"
 
 # gibt den Index zurück
 getIndex = (id, obj) ->
@@ -142,6 +147,23 @@ app = new Deproute
 											tabs = lang.detail[@currentPlanet].meta
 											t = extendDetailTab tabs[getIndex tab, tabs], @currentPlanet
 											@tabMedia = new TabMedia t.media, @currentPlanet
+									'media':
+										show: ->
+											media = []
+											for tab in lang.detail[@currentPlanet].meta when tab.media
+												media = media.concat extendDetailTab(tab, @currentPlanet).media
+											
+											$('.planetdetail .content').html interpolate templates.planetdetailmedia,
+												planet: @currentPlanet
+												media: for m in media
+													{
+														thumb: getPlanetImage(m, @currentPlanet, 'low')
+														caption: m.caption
+													}
+											
+											planet = @currentPlanet
+											$('.planetdetail .content > .media').children().each (i, e) ->
+												$(e).click -> window.open(getPlanetImage(media[i], @planet, 'high'), 'fullscreen')
 window.app = app # export
 do go = ->
 	if general? and templates?

@@ -152,6 +152,8 @@ nav#dimension {
 	overflow: auto;
 }
 
+/* Bildbereich */
+
 .planetdetail .image {
 	position: absolute;
 	top: 0;
@@ -185,6 +187,24 @@ nav#dimension {
 	right: 1em;
 	bottom: 1.5em;
 }
+
+/* Alle Medien */
+
+.planetdetail .media  > .thumb {
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	padding: 1em;
+	
+	cursor: pointer;
+}
+
+.planetdetail .media  > .thumb > img {
+	max-width: 100px;
+	max-height: 75px;
+}
+
+/* Leiste auf der rechten Seite */
 
 .planetdetail > .rbar {
 	width: 3em;
