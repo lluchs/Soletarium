@@ -103,7 +103,15 @@ app = new Deproute
 					
 					# Planetenanzeige
 					$('#content').html interpolate(templates.planets, {lang: currentLang, planets: $.extend(true, [], general.planets, lang.planets)})
-						
+					
+					# Events
+					$('#planets .planet').each (i, e) ->
+						planet = general.planets[i].id
+						$(e).mouseenter ->
+							$('img', this).attr('src', "images/hover/#{planet}_Hover.png")
+						$(e).mouseleave ->
+							$('img', this).attr('src', "images/planets/#{planet}.png")
+					
 					# Position
 					do positionPlanets
 					$(window).resize(positionPlanets)
