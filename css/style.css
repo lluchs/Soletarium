@@ -50,16 +50,12 @@ nav#dimension {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-repeat: no-repeat;
+	overflow: hidden;
 }
 
-#bg-sun {
-	background-image: url(../images/layout/bg-sun.svg);
-}
-
-#bg-end {
-	background-image: url(../images/layout/bg-end.svg);
-	background-position: top right;
+#bg-end img {
+	position: absolute;
+	right: 0;
 }
 
 .planet {
