@@ -1,3 +1,4 @@
+/* === Layout === */
 
 article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section { 
 	display:block; 
@@ -10,9 +11,6 @@ html, body, #container, #main, #content, #planets {
 
 body {
 	margin: 0;
-	
-	color: white;
-	font-family: Verdana, Arial, non-serif;
 	/*background-color: black;*/
 }
 
@@ -86,11 +84,11 @@ nav#dimension {
 /* Planetendetail */
 .planetdetail {
 	position: absolute;
-	top: 200px;
-	left: 200px;
-	right: 200px;
-	height: 302px;
-	max-width: 1000px;
+	top: 150px;
+	left: 50px;
+	right: 50px;
+	height: 460px;
+	max-width: 1200px;
 	background-color: black;
 	border-radius: 10px;
 }
@@ -106,7 +104,7 @@ nav#dimension {
 .planetdetail .tabs {
 	position: relative;
 	width: 100%;
-	height: 2.2em;
+	height: 35px;
 	box-sizing: border-box;
 	background-color: #811616;
 	background-image: url('../images/layout/tabbg.png');
@@ -123,7 +121,7 @@ nav#dimension {
 
 .planetdetail .tabs .tab {
 	float: left;
-	height: 2.2em;
+	height: 35px;
 	list-style-type: none;
 	white-space: nowrap;
 	background-image: url('../images/layout/tabbg.png');
@@ -146,7 +144,7 @@ nav#dimension {
 .planetdetail .text {
 	position: absolute;
 	top: 2em;
-	right: 350px;
+	right: 550px;
 	bottom: 2em;
 	left: 1.5em;
 	overflow: auto;
@@ -159,7 +157,7 @@ nav#dimension {
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 350px;
+	width: 550px;
 }
 
 .planetdetail .image > img {
@@ -256,4 +254,24 @@ nav#dimension {
 	width: 40%;
 	border-left: solid 1px grey;
 	border-right: solid 1px grey;
+}
+
+/* === Style === */
+
+body {
+	color: white;
+	font-family: Verdana, Arial, non-serif;
+}
+
+#main > footer {
+	font-family: Arial, non-serif;
+	font-size: 12px;
+	line-height: 19px;
+}
+
+#main > footer h1 {
+	font-family: Times, serif;
+	font-weight: normal;
+	font-size: 1.5em;
+	text-transform: uppercase;
 }
