@@ -63,6 +63,16 @@ positionPlanets = ->
 		xpos = padding.left + general.planets[i].xpos * width / 100
 		setPlanetPos(i, xpos, ypos)
 
+# verschiebt das Detailfenster bei Bedarf
+positionDetails = ->
+	e = $('.planetdetail')
+	win = $(window).width()
+	max = 1200
+	space = 50
+	space = (win - max)/2 if win - 2*space > max
+	e.css 'left', space
+	e.css 'right', space
+
 # gibt den Bildpfad zurück
 getPlanetImage = (img, planet, res) ->
 	auto = (r) -> "#{img.auto}_#{r[0].toUpperCase() + r[1...r.length]}Res.jpg"
@@ -143,10 +153,15 @@ app = new Deproute
 										tabs: tabs
 										lang: currentLang
 									
+									# Positionierung
+									do positionDetails
+									$(window).resize positionDetails
+									
 									# bereits ein Tab aufgerufen?
 									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
+									$(window).unbind 'resize', positionDetails
 									$('.planetdetail').remove()
 								sub:
 									':tab':
