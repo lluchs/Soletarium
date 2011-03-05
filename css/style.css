@@ -65,10 +65,6 @@ nav#dimension {
 	cursor: pointer;
 }
 
-.planet img {
-	position: relative;
-}
-
 .planet .name {
 	position: absolute;
 	transform: rotate(-70deg);

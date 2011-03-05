@@ -106,14 +106,11 @@ app = new Deproute
 					
 					# Events
 					$('#planets .planet').each (i, e) ->
-						planet = general.planets[i]
+						planet = general.planets[i].id
 						$(e).mouseenter ->
-							$('img', this).attr('src', "images/hover/#{planet.id}_Hover.png")
-							              .css('left', "#{planet.offset.x - planet.hover.x}px")
-										  .css('top', "#{planet.offset.y - planet.hover.y}px")
+							$('img', this).attr('src', "images/hover/#{planet}_Hover.png")
 						$(e).mouseleave ->
-							$('img', this).attr('src', "images/planets/#{planet.id}.png")
-							              .css('left', 0).css('top', 0)
+							$('img', this).attr('src', "images/planets/#{planet}.png")
 					
 					# Position
 					do positionPlanets
