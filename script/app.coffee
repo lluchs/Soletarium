@@ -108,7 +108,7 @@ app = new Deproute
 					$('#planets .planet').each (i, e) ->
 						planet = general.planets[i].id
 						$(e).mouseenter ->
-							$('img', this).attr('src', "images/hover/#{planet}_Hover.png")
+							$('img', this).attr('src', "images/planets/#{planet}_Hover.png")
 						$(e).mouseleave ->
 							$('img', this).attr('src', "images/planets/#{planet}.png")
 					
