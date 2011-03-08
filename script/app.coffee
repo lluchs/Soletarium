@@ -63,6 +63,16 @@ positionPlanets = ->
 		xpos = padding.left + general.planets[i].xpos * width / 100
 		setPlanetPos(i, xpos, ypos)
 
+# passt den Footer an
+adjustFooter = ->
+	footer = $('#main > footer')
+	footer.css 'height', 'auto'
+	hgt = $('#content').height()
+	max = 797 # Höhe des Hintergrunds - 1 (IE9)
+	if hgt - footer.height() > max
+		# footer vergrößern, damit der Hintergrund alles ausfüllt
+		footer.height hgt - max
+
 # verschiebt das Detailfenster bei Bedarf
 positionDetails = ->
 	e = $('.planetdetail')
@@ -125,6 +135,10 @@ app = new Deproute
 					# Position
 					do positionPlanets
 					$(window).resize(positionPlanets)
+					
+					# Footer
+					do adjustFooter
+					$(window).resize adjustFooter
 				sub:
 					'planet':
 						sub:
