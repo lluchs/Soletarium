@@ -53,8 +53,8 @@ setPlanetPos = (i, x, y) ->
 
 # setzt die dynamische Position der Planeten
 positionPlanets = ->
-	# Y-Position: 3/2 des verfügbaren Platzes
-	ypos = ($('#planets').height() - $('#main > footer').height()) / 1.5
+	# Y-Position: mittig
+	ypos = $('#planets').height() / 1.7
 	# fester Abstand links/rechts
 	padding = general.pdata.padding
 	width = $('#planets').width() - padding.left - padding.right
@@ -135,13 +135,13 @@ app = new Deproute
 						$(e).mouseleave ->
 							$('img', this).attr('src', "images/planets/#{planet}.png")
 					
-					# Position
-					do positionPlanets
-					$(window).resize(positionPlanets)
-					
 					# Footer
 					do adjustFooter
 					$(window).resize adjustFooter
+					
+					# Position
+					do positionPlanets
+					$(window).resize(positionPlanets)
 					
 					# Features
 					$('#content').append interpolate(templates.features, lang)
