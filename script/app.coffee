@@ -234,6 +234,13 @@ app = new Deproute
 									$('#planets').append templates.habzone
 								hide: ->
 									do $('#habzone').remove
+							'solwind':
+								show: ->
+									do $('#planets .planet').hide
+									$('#planets').append templates.solwind
+								hide: ->
+									do $('#planets .planet').show
+									do $('#solwind').remove
 window.app = app # export
 do go = ->
 	if general? and templates?
