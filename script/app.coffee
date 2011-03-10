@@ -67,11 +67,15 @@ positionPlanets = ->
 adjustFooter = ->
 	footer = $('#main > footer')
 	footer.css 'height', 'auto'
-	hgt = $('#content').height()
+	content = $('#content')
+	hgt = content.height()
 	max = 797 # Höhe des Hintergrunds - 1 (IE9)
 	if hgt - footer.height() > max
 		# footer vergrößern, damit der Hintergrund alles ausfüllt
 		footer.height hgt - max
+	
+	# Inhalt anpassen
+	content.height hgt - footer.height()
 
 # verschiebt das Detailfenster bei Bedarf
 positionDetails = ->
