@@ -143,6 +143,25 @@ app = new Deproute
 					# Footer
 					do adjustFooter
 					$(window).resize adjustFooter
+					
+					# Features
+					$('#content').append interpolate(templates.features, lang)
+					# Verlinkung anpassen
+					# breitestes Element finden
+					maxwdt = 0
+					li = $('#features li')
+					li.each (i, e) ->
+						e = $(e)
+						wdt = e.width()
+						maxwdt = wdt if wdt > maxwdt
+						e.click ->
+							feature = e.data 'feature'
+							if feature is 'standard'
+								location.hash = "#/#{currentLang}/main"
+							else
+								location.hash = "#/#{currentLang}/main/feature/#{feature}"
+					# alle Elemente bekommen die gleiche Breite
+					li.width maxwdt
 				sub:
 					'planet':
 						sub:
