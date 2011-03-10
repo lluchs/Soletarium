@@ -39,7 +39,7 @@ class Deproute
 		# adjust differences
 		# remove obsolete parts
 		if diff isnt 0 and diff isnt @current.length
-			for i in [@current.length-1...diff]
+			for i in [@current.length-1..diff]
 				# try to call the route
 				@getRoute(@current[0..i])?.hide?()
 		# Dann nötige Teile erstellen (inklusive Funktion des aktuellen Pfads)
