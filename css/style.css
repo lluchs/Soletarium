@@ -76,6 +76,7 @@ nav#dimension {
 	position: absolute;
 	transform: rotate(-70deg);
 	-moz-transform: rotate(-70deg);
+	-ms-transform: rotate(-70deg);
 	-o-transform: rotate(-70deg);
 	-webkit-transform: rotate(-70deg);
 }
@@ -264,10 +265,12 @@ nav#dimension {
 	transform-origin: center left;
 	-o-transform-origin: center left;
 	-moz-transform-origin: center left;
+	-ms-transform-origin: center left;
 	-webkit-transform-origin: center left;
 	transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
 	-webkit-transform: rotate(90deg);
 	margin: 0;
 	position: absolute;
