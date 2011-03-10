@@ -228,6 +228,13 @@ app = new Deproute
 											planet = @currentPlanet
 											$('.planetdetail .content > .media').children().each (i, e) ->
 												$(e).click -> window.open(getPlanetImage(media[i], @planet, 'high'), 'fullscreen')
+					'feature':
+						sub:
+							'habzone':
+								show: ->
+									$('#planets').append templates.habzone
+								hide: ->
+									do $('#habzone').remove
 window.app = app # export
 do go = ->
 	if general? and templates?
