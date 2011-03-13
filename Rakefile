@@ -64,7 +64,12 @@ def jsonTask srcGlob, targetFile, taskSymbol, baseDir = nil
 			content = nil
 			# extract yaml
 			if f =~ /\.yaml$/
-				content = YAML.load_file(f)
+				begin
+					content = YAML.load_file(f)
+				rescue
+					# add the file to exceptions
+					raise $!, "In file #{f}: #{$!}", caller
+				end
 			else
 				content = getContents(f).gsub(/\r|\n|\t/, '')
 			end
