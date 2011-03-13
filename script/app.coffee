@@ -51,17 +51,33 @@ setPlanetPos = (i, x, y) ->
 	e.css('left', "#{x - general.planets[i].offset.x}px") if x
 	e.css('top', "#{y - general.planets[i].offset.y}px") if y
 
+# rechnet die X-Position in Pixeln aus
+calcPlanetX = (percent) ->
+	# fester Abstand links/rechts
+	padding = general.pdata.padding
+	width = $('#planets').width() - padding.left - padding.right
+	return padding.left + percent * width / 100
+
 # setzt die dynamische Position der Planeten
 positionPlanets = ->
 	# Y-Position: mittig
 	ypos = $('#planets').height() / 1.7
-	# fester Abstand links/rechts
-	padding = general.pdata.padding
-	width = $('#planets').width() - padding.left - padding.right
+	
 	$('#planets .planet').each (i, e) ->
 		# prozentuale Position
-		xpos = padding.left + general.planets[i].xpos * width / 100
+		xpos = calcPlanetX general.planets[i].xpos
 		setPlanetPos(i, xpos, ypos)
+
+# positioniert die habitale Zone, ähnlich wie Planeten
+positionHabZone = ->
+	habzone = $('#habzone')
+	# Angaben in Prozent
+	data = general.features.habzone
+	xpos = data.x
+	wdt = data.wdt
+	left = calcPlanetX(xpos)
+	habzone.css 'left', left
+	habzone.width calcPlanetX((xpos+wdt))-left
 
 # passt den Footer an
 adjustFooter = ->
@@ -232,8 +248,11 @@ app = new Deproute
 							'habzone':
 								show: ->
 									$('#planets').append templates.habzone
+									do positionHabZone
+									$(window).resize positionHabZone
 								hide: ->
 									do $('#habzone').remove
+									$(window).unbind 'resize', positionHabZone
 							'solwind':
 								show: ->
 									do $('#planets .planet').hide
