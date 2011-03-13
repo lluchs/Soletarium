@@ -40,6 +40,15 @@ class TabMedia
 
 # Funktionen
 
+# fügt den Eventhandler hinzu und ruft die Funktion auf
+doResize = (fn) ->
+	do fn
+	$(window).resize fn
+
+# entfernt den Eventhandler
+rmResize = (fn) ->
+	$(window).unbind 'resize', fn
+
 # wendet das Template an
 interpolate = (template, data) ->
 	compiled[template] or= Handlebars.compile template
@@ -152,12 +161,10 @@ app = new Deproute
 							$('img', this).attr('src', "images/planets/#{planet}.png")
 					
 					# Footer
-					do adjustFooter
-					$(window).resize adjustFooter
+					doResize adjustFooter
 					
 					# Position
-					do positionPlanets
-					$(window).resize(positionPlanets)
+					doResize positionPlanets
 					
 					# Features
 					$('#content').append interpolate(templates.features, lang)
@@ -206,14 +213,13 @@ app = new Deproute
 										lang: currentLang
 									
 									# Positionierung
-									do positionDetails
-									$(window).resize positionDetails
+									doResize positionDetails
 									
 									# bereits ein Tab aufgerufen?
 									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
-									$(window).unbind 'resize', positionDetails
+									rmResize positionDetails
 									$('.planetdetail').remove()
 								sub:
 									':tab':
@@ -248,11 +254,10 @@ app = new Deproute
 							'habzone':
 								show: ->
 									$('#planets').append templates.habzone
-									do positionHabZone
-									$(window).resize positionHabZone
+									doResize positionHabZone
 								hide: ->
 									do $('#habzone').remove
-									$(window).unbind 'resize', positionHabZone
+									rmResize positionHabZone
 							'solwind':
 								show: ->
 									do $('#planets .planet').hide
