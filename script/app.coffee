@@ -67,10 +67,14 @@ calcPlanetX = (percent) ->
 	width = $('#planets').width() - padding.left - padding.right
 	return padding.left + percent * width / 100
 
+# rechnet die Y-Position in Pixeln aus
+calcPlanetY = ->
+	$('#planets').height() / 1.7
+
 # setzt die dynamische Position der Planeten
 positionPlanets = ->
 	# Y-Position: mittig
-	ypos = $('#planets').height() / 1.7
+	ypos = calcPlanetY()
 	
 	$('#planets .planet').each (i, e) ->
 		# prozentuale Position
@@ -87,6 +91,17 @@ positionHabZone = ->
 	left = calcPlanetX(xpos)
 	habzone.css 'left', left
 	habzone.width calcPlanetX((xpos+wdt))-left
+
+# positioniert die Sonnenwindgrafik, sodass die Erde am selben Ort bleibt
+positionSolWind = ->
+	e = $('#solwind')
+	# Offset der Erde in der Grafik
+	offset = general.features.solwind.offset
+	# Position der Erde
+	x = calcPlanetX general.planets[2].xpos
+	y = calcPlanetY()
+	e.css('left', "#{x - offset.x}px")
+	e.css('top', "#{y - offset.y}px")
 
 # passt den Footer an
 adjustFooter = ->
@@ -262,9 +277,11 @@ app = new Deproute
 								show: ->
 									do $('#planets .planet').hide
 									$('#planets').append templates.solwind
+									doResize positionSolWind
 								hide: ->
 									do $('#planets .planet').show
 									do $('#solwind').remove
+									rmResize positionSolWind
 window.app = app # export
 do go = ->
 	if general? and templates?
