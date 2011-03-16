@@ -282,6 +282,16 @@ app = new Deproute
 									do $('#planets .planet').show
 									do $('#solwind').remove
 									rmResize positionSolWind
+							'albedo':
+								show: ->
+									@albedo_previous = []
+									for i, planet of general.planets
+										e = $('#planets .planet img').eq(i)
+										@albedo_previous.push e.attr 'src'
+										e.attr 'src', "images/features/Albedo_#{planet.id}.png"
+								hide: ->
+									for i of general.planets
+										$('#planets .planet img').eq(i).attr 'src', @albedo_previous[i]
 window.app = app # export
 do go = ->
 	if general? and templates?
