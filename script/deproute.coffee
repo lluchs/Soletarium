@@ -41,7 +41,7 @@ class Deproute
 		if diff isnt 0 and diff isnt @current.length
 			for i in [@current.length-1..diff]
 				# try to call the route
-				@getRoute(@current[0..i])?.hide?()
+				@getRoute(@current[0..i])?.hide?.apply this
 		# Dann nötige Teile erstellen (inklusive Funktion des aktuellen Pfads)
 		for i in [diff...path.length]
 			# add function to the queue
