@@ -148,6 +148,18 @@ nav#dimension {
 	background-image: url(../images/features/solwind.png);
 }
 
+/* Feature: Temperatur */
+#temperature {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	
+	background-image: url(../images/features/Temp_Gradient.svg);
+	background-size: 100% 100%;
+}
+
 /* Planetendetail */
 .planetdetail {
 	position: absolute;

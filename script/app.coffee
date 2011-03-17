@@ -304,6 +304,11 @@ app = new Deproute
 									do $('#bg-end').show
 									for i of general.planets
 										$('#planets .planet img').eq(i).attr 'src', @albedo_previous[i]
+							'temperature':
+								show: ->
+									$('#planets').append templates.temperature
+								hide: ->
+									do $('#temperature').remove
 window.app = app # export
 do go = ->
 	if general? and templates?
