@@ -293,6 +293,7 @@ app = new Deproute
 							'albedo':
 								show: ->
 									do createFeatureOverlay
+									do $('#bg-end').hide
 									@albedo_previous = []
 									for i, planet of general.planets
 										e = $('#planets .planet img').eq(i)
@@ -300,6 +301,7 @@ app = new Deproute
 										e.attr 'src', "images/features/Albedo_#{planet.id}.png"
 								hide: ->
 									do rmFeatureOverlay
+									do $('#bg-end').show
 									for i of general.planets
 										$('#planets .planet img').eq(i).attr 'src', @albedo_previous[i]
 window.app = app # export
