@@ -143,7 +143,13 @@ getIndex = (id, obj) ->
 # erweitert die Tabs des gegeben Planets um allgemeine Daten
 extendDetailTab = (tdata, planet) ->
 	$.extend true, tdata, general.detail.all[tdata.id], general.detail.planets[planet][tdata.id]
-		
+	
+# erstellt ein Overlay zum Abdecken der Planeten
+createFeatureOverlay = ->
+	$('#planets').append '<div id="feature-overlay"></div>'
+rmFeatureOverlay = ->
+	do $('#feature-overlay').remove
+	
 # das App
 app = new Deproute
 	':lang':
@@ -268,9 +274,11 @@ app = new Deproute
 						sub:
 							'habzone':
 								show: ->
+									do createFeatureOverlay
 									$('#planets').append templates.habzone
 									doResize positionHabZone
 								hide: ->
+									do rmFeatureOverlay
 									do $('#habzone').remove
 									rmResize positionHabZone
 							'solwind':
@@ -284,12 +292,14 @@ app = new Deproute
 									rmResize positionSolWind
 							'albedo':
 								show: ->
+									do createFeatureOverlay
 									@albedo_previous = []
 									for i, planet of general.planets
 										e = $('#planets .planet img').eq(i)
 										@albedo_previous.push e.attr 'src'
 										e.attr 'src', "images/features/Albedo_#{planet.id}.png"
 								hide: ->
+									do rmFeatureOverlay
 									for i of general.planets
 										$('#planets .planet img').eq(i).attr 'src', @albedo_previous[i]
 window.app = app # export
