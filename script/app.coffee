@@ -307,6 +307,10 @@ app = new Deproute
 							'temperature':
 								show: ->
 									$('#planets').append templates.temperature
+									e = $('#temperature')
+									padding = general.pdata.padding
+									e.css 'left', padding.left
+									e.css 'right', padding.right
 								hide: ->
 									do $('#temperature').remove
 window.app = app # export
