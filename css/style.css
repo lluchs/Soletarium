@@ -79,6 +79,8 @@ nav#dimension {
 	-ms-transform: rotate(-70deg);
 	-o-transform: rotate(-70deg);
 	-webkit-transform: rotate(-70deg);
+	
+	white-space: nowrap;
 }
 
 .planet .moon.name {
