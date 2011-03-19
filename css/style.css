@@ -23,6 +23,10 @@ a {
 	color: white;
 }
 
+img {
+	border: none;
+}
+
 #main {
 	position: relative;
 }
@@ -305,6 +309,8 @@ nav#dimension {
 	top: 0;
 	right: 0;
 	bottom: 1em;
+	
+	white-space: nowrap;
 }
 
 .planetdetail > .rbar h1 {
@@ -358,6 +364,10 @@ nav#dimension {
 body {
 	color: white;
 	font-family: Verdana, Arial, non-serif;
+}
+
+#features {
+	font-size: 9px;
 }
 
 #main > footer {
