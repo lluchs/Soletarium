@@ -132,10 +132,23 @@ FileList['script/*.coffee'].each do |source|
 	end
 end
 
+desc 'Compiles SASS to CSS'
+begin
+	style = "#{build('css')}/style.css"
+	task :css => [style, build('css')]
+	file style do
+		`sass css/style.sass #{style}`
+		puts 'Compiling CSS'
+	end
+
+	FileList['css/*.sass'].each do |sass|
+		file style => sass
+	end
+end
+
 desc 'Copys static files'
-task :files => [build('css'), build('images')]
-copyTask 'css/*', 'css', :files
+task :files => [build('images')]
 dirCopyTask 'images/**/*.*', 'images', 'images', :files
 copyTask 'index.html', '', :files
 
-task :default => [:coffee, :lib, :general, :lang, :template, :files]
+task :default => [:coffee, :css, :lib, :general, :lang, :template, :files]
