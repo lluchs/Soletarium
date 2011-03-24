@@ -1,3 +1,28 @@
+// Mixins
+=transform($arg)
+	transform: $arg
+	-o-transform: $arg
+	-moz-transform: $arg
+	-ms-transform: $arg
+	-webkit-transform: $arg
+
+=transform-origin($arg)
+	transform-origin: $arg
+	-o-transform-origin: $arg
+	-moz-transform-origin: $arg
+	-ms-transform-origin: $arg
+	-webkit-transform-origin: $arg
+
+=abs
+	position: absolute
+
+=abs-fill
+	+abs
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+
 // === Layout ===
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
@@ -24,7 +49,7 @@ img
 #main
 	position: relative
 	> header
-		position: absolute
+		+abs
 		z-index: 100
 		top: 2em
 		width: 100%
@@ -32,7 +57,7 @@ img
 
 nav#dimension
 	width: 3em
-	position: absolute
+	+abs
 	right: 1em
 	top: 1em
 	background-color: black
@@ -43,27 +68,23 @@ nav#dimension
 	background-image: url(../images/layout/bg.png)
 	background-color: black
 	.bg
-		position: absolute
+		+abs
 		width: 100%
 		height: 100%
 		overflow: hidden
 
 #bg-end img
-	position: absolute
+	+abs
 	right: 0
 
 .planet
-	position: absolute
+	+abs
 	z-index: 0
 	&:hover
 		cursor: pointer
 	.name
-		position: absolute
-		transform: rotate(-70deg)
-		-moz-transform: rotate(-70deg)
-		-ms-transform: rotate(-70deg)
-		-o-transform: rotate(-70deg)
-		-webkit-transform: rotate(-70deg)
+		+abs
+		+transform(rotate(-70deg))
 		white-space: nowrap
 	.moon.name
 		font-size: 75%
@@ -71,7 +92,7 @@ nav#dimension
 // Features
 
 #features
-	position: absolute
+	+abs
 	right: 0
 	bottom: 0
 	width: 500px
@@ -85,56 +106,40 @@ nav#dimension
 /* Overlay zum Abdecken der Planeten
 
 #feature-overlay
-	position: absolute
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
+	+abs-fill
 	//background: transparent; <- nicht IE-kompatibel
 	background: rgba(0, 0, 0, 0)
 
 // Feature: Habitable Zone
 
 #habzone
-	position: absolute
+	+abs
 	top: 0
 	bottom: 0
 	.inner
-		position: absolute
-		top: 0
+		+abs-fill
 		right: 82px
-		bottom: 0
 		left: 79px
 		background-color: rgba(30, 34, 70, 0.09)
 	.right
-		position: absolute
+		+abs
 		right: 0
 
 // Feature: Sonnenwind
 
 #solwind
-	position: absolute
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
+	+abs-fill
 	background-repeat: no-repeat
 	background-image: url(../images/features/solwind.png)
 
 // Feature: Temperatur
 
 #temperature
-	position: absolute
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
+	+abs-fill
 	background-image: url(../images/features/Temp_Gradient.svg)
 	background-size: 100% 100%
 	> div
-		position: absolute
-		top: 0
-		bottom: 0
+		+abs-fill
 		left: -50px
 		width: 50px
 		background-image: url(../images/features/Temp_Left.svg)
@@ -143,18 +148,15 @@ nav#dimension
 // Planetendetail
 
 .planetdetail
-	position: absolute
+	+abs
 	top: 150px
 	height: 460px
 	// left/right wird im app gesetzt
 	background-color: rgba(0, 0, 0, 0.85)
 	border-radius: 10px
 	> .left
-		position: absolute
-		top: 0
+		+abs-fill
 		right: 3em
-		bottom: 0
-		left: 0
 	.tabs
 		position: relative
 		width: 100%
@@ -180,13 +182,10 @@ nav#dimension
 			float: left
 			padding: 0.5em 1em
 	.content
-		position: absolute
+		+abs-fill
 		top: 2.5em
-		right: 0
-		bottom: 0
-		left: 0
 	.text
-		position: absolute
+		+abs
 		top: 1em
 		right: 550px
 		bottom: 1em
@@ -196,7 +195,7 @@ nav#dimension
 			margin-top: 0
 	// Bildbereich
 	.image
-		position: absolute
+		+abs
 		top: 0
 		right: 0
 		bottom: 0
@@ -207,17 +206,17 @@ nav#dimension
 				max-height: 100%
 				cursor: pointer
 			.back
-				position: absolute
+				+abs
 				top: 40%
 				left: 0
 				cursor: pointer
 			.forward
-				position: absolute
+				+abs
 				top: 40%
 				right: 0
 				cursor: pointer
 			.caption
-				position: absolute
+				+abs
 				right: 1em
 				bottom: 1.5em
 	// Tab: Alle Medien
@@ -233,34 +232,26 @@ nav#dimension
 	// Leiste auf der rechten Seite
 	> .rbar
 		width: 3em
-		position: absolute
+		+abs
 		top: 0
 		right: 0
 		bottom: 1em
 		white-space: nowrap
 		h1
-			transform-origin: center left
-			-o-transform-origin: center left
-			-moz-transform-origin: center left
-			-ms-transform-origin: center left
-			-webkit-transform-origin: center left
-			transform: rotate(90deg)
-			-o-transform: rotate(90deg)
-			-moz-transform: rotate(90deg)
-			-ms-transform: rotate(90deg)
-			-webkit-transform: rotate(90deg)
+			+transform-origin(center left)
+			+transform(rotate(90deg))
 			margin: 0
-			position: absolute
+			+abs
 			top: 0
 			left: 0.75em
 		a
-			position: absolute
+			+abs
 			right: 1.5em
 			bottom: 0
 
 // Footer
 #main > footer
-	position: absolute
+	+abs
 	z-index: 10
 	width: 100%
 	bottom: 0
