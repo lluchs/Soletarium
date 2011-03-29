@@ -136,14 +136,20 @@ nav#dimension
 
 #temperature
 	+abs-fill
-	background-image: url(../images/features/Temp_Gradient.svg)
-	background-size: 100% 100%
+	> img
+		+abs
+		left: 100px
+		top: 115px
 	> div
 		+abs-fill
-		left: -50px
-		width: 50px
-		background-image: url(../images/features/Temp_Left.svg)
+		background-image: url(../images/features/Temp_Gradient.svg)
 		background-size: 100% 100%
+		> div
+			+abs-fill
+			left: -50px
+			width: 50px
+			background-image: url(../images/features/Temp_Left.svg)
+			background-size: 100% 100%
 
 // Planetendetail
 

@@ -310,7 +310,8 @@ app = new Deproute
 							'temperature':
 								show: ->
 									$('#planets').append templates.temperature
-									e = $('#temperature')
+									$('#temperature').append "<img src='images/features/Temp_Graph_#{currentLang}.png' alt=''>"
+									e = $('#temperature > div')
 									padding = general.pdata.padding
 									e.css 'left', padding.left
 									e.css 'right', padding.right
