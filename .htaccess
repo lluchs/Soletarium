@@ -1,0 +1,2 @@
+AddCharset UTF-8 .html .css .js
+AddType 'application/json; charset=UTF-8' json
