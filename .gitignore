@@ -3,3 +3,5 @@
 /images/
 /data/
 /.sass-cache/
+/servefiles.rb
+/*.lnk
