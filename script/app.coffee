@@ -294,6 +294,8 @@ app = new Deproute
 								show: ->
 									do createFeatureOverlay
 									do $('#bg-end').hide
+									@albedo_bg = $('#planets').css 'background-image'
+									$('#planets').css 'background-image', 'none'
 									@albedo_previous = []
 									for i, planet of general.planets
 										e = $('#planets .planet img').eq(i)
@@ -302,6 +304,7 @@ app = new Deproute
 								hide: ->
 									do rmFeatureOverlay
 									do $('#bg-end').show
+									$('#planets').css 'background-image', @albedo_bg
 									for i of general.planets
 										$('#planets .planet img').eq(i).attr 'src', @albedo_previous[i]
 							'temperature':
