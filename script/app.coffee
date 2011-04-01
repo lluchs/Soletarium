@@ -120,7 +120,7 @@ adjustFooter = ->
 positionDetails = ->
 	e = $('.planetdetail')
 	win = $(window).width()
-	max = 1200
+	max = 950
 	space = 50
 	space = (win - max)/2 if win - 2*space > max
 	e.css 'left', space
