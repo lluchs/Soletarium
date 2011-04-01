@@ -4,11 +4,6 @@
 		<div>
 			<img src="images/layout/{{logo}}" alt="Soletarium - {{subtitle}}">
 		</div>
-		<nav id="dimension">
-			<a href="#">2D</a>
-			<hr>
-			<a href="#">3D</a>
-		</nav>
 	</header>
 {{/header}}
 	
