@@ -25,7 +25,8 @@ class TabMedia
 			ol = $('.caption ol', @image)
 			m = this
 			for i of @media
-				li = $("<li>#{+i+1}</li>").click (e) -> m.show +$(this).text()-1
+				li = $("<li></li>").addClass("n#{+i+1}").click (e) -> m.show $(this).data 'index'
+				li.data 'index', i
 				ol.append li
 		
 		@show 0
