@@ -269,7 +269,7 @@ app = new Deproute
 											
 											planet = @currentPlanet
 											$('.planetdetail .content > .media').children().each (i, e) ->
-												$(e).click -> window.open(getPlanetImage(media[i], @planet, 'high'), 'fullscreen')
+												$(e).click -> window.open(getPlanetImage(media[i], planet, 'high'), 'fullscreen')
 					'feature':
 						sub:
 							'habzone':
