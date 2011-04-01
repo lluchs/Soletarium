@@ -137,8 +137,7 @@ begin
 	style = "#{build('css')}/style.css"
 	task :css => [style, build('css')]
 	file style do
-		`sass css/style.sass #{style}`
-		puts 'Compiling CSS'
+		sh "sass css/style.sass #{style}"
 	end
 
 	FileList['css/*.sass'].each do |sass|
