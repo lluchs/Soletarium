@@ -3,7 +3,13 @@
 </div>
 <div class="image">
 	<img>
-	<a class="back"><img alt="&lt;" src="images/layout/larrow.svg"></a>
-	<a class="forward"><img alt="&gt;" src="images/layout/rarrow.svg"></a>
-	<div class="caption"></div>
+	<div class="caption">
+		<div>
+			<h1></h1>
+			<div></div>
+		</div>
+		<nav>
+			<ol></ol>
+		</nav>
+	</div>
 </div>

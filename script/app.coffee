@@ -15,28 +15,29 @@ $.getJSON 'data/templates.json', (data) ->
 # Tab-Bilderrotation
 class TabMedia
 	constructor: (@media, @planet) ->
-		@pos = 0
 		@image = $('.planetdetail .image')
 		if not @media
 			do @image.hide
 			$('.planetdetail .text').css 'right', 0
 			return
-		do @show
-		@image.children('.back').click => do @back
-		@image.children('.forward').click => do @forward
-	show: ->
-		@image.children('img').attr('src', getPlanetImage(@media[@pos], @planet, 'med'))
+		
+		if @media.length > 1
+			ol = $('.caption ol', @image)
+			m = this
+			for i of @media
+				li = $("<li>#{+i+1}</li>").click (e) -> m.show +$(this).text()-1
+				ol.append li
+		
+		@show 0
+	show: (item) ->
+		@image.children('img').attr('src', getPlanetImage(@media[item], @planet, 'med'))
 		                      .unbind('click')
-							  .click => window.open(getPlanetImage(@media[@pos], @planet, 'high'), 'fullscreen')
-		@image.children('.caption').text @media[@pos].caption
-	back: ->
-		--@pos
-		@pos = @media.length-1 if @pos < 0
-		do @show
-	forward: ->
-		++@pos
-		@pos = 0 if @pos is @media.length
-		do @show
+							  .click => window.open(getPlanetImage(@media[item], @planet, 'high'), 'fullscreen')
+		$('.caption h1', this.image).text @media[item].caption
+		
+		li = $('.caption li', @image)
+		li.removeClass 'highlighted'
+		li.eq(item).addClass 'highlighted'
 
 # Funktionen
 
