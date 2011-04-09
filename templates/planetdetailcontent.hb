@@ -5,11 +5,13 @@
 	<img>
 	<div class="caption">
 		<div>
-			<h1></h1>
-			<div></div>
+			<div>
+				<h1></h1>
+				<div></div>
+			</div>
+			<nav>
+				<ol></ol>
+			</nav>
 		</div>
-		<nav>
-			<ol></ol>
-		</nav>
 	</div>
 </div>
