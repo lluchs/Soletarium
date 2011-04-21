@@ -23,6 +23,11 @@
 	-moz-box-orient: $arg
 	-webkit-box-orient: $arg
 
+=box-align($arg)
+	box-align: $arg
+	-moz-box-align: $arg
+	-webkit-box-align: $arg
+
 =box-flex($arg)
 	box-flex: $arg
 	-moz-box-flex: $arg
@@ -178,96 +183,105 @@ nav#dimension
 	> .left
 		+abs-fill
 		right: 3em
-	.tabs
-		position: relative
-		width: 100%
-		height: 35px
-		box-sizing: border-box
-		background-color: #811616
-		background-image: url('../images/layout/tabbg.png')
-		background-repeat: repeat-x
-		border-top-left-radius: 10px
-		padding-left: 10px
-		> ul
-			margin: 0
-			padding: 0
-			padding-bottom: 0
-		.tab
-			float: left
+		> .tabs
+			position: relative
+			width: 100%
 			height: 35px
-			list-style-type: none
-			white-space: nowrap
+			box-sizing: border-box
+			background-color: #811616
 			background-image: url('../images/layout/tabbg.png')
 			background-repeat: repeat-x
-		a
-			float: left
-			padding: 0.5em 1em
-	.content
-		+abs-fill
-		top: 2.5em
-	.text
-		+abs
-		top: 1em
-		right: 550px
-		bottom: 1em
-		left: 1.5em
-		overflow: auto
-		> *:first-child
-			margin-top: 0
-	// Bildbereich
-	.image
-		+abs
-		top: 0
-		right: 0
-		bottom: 0
-		width: 550px
-		>
-			img
-				max-width: 100%
-				max-height: 100%
-				cursor: pointer
-			.caption
+			border-top-left-radius: 10px
+			padding-left: 10px
+			> ul
+				margin: 0
+				padding: 0
+				padding-bottom: 0
+			.tab
+				float: left
+				height: 35px
+				list-style-type: none
+				white-space: nowrap
+				background-image: url('../images/layout/tabbg.png')
+				background-repeat: repeat-x
+			a
+				float: left
+				padding: 0.5em 1em
+		> .content
+			+abs-fill
+			top: 2.5em
+			> .text
 				+abs
+				top: 1em
+				right: 550px
+				bottom: 1em
+				left: 1.5em
+				overflow: auto
+				> *:first-child
+					margin-top: 0
+			// Bildbereich
+			> .image
+				+abs
+				top: 0
 				right: 0
-				bottom: 20px
-				width: 400px
-				
-				background-color: rgba(0, 0, 0, 0.5)
-				
-				h1
-					margin: 0
-				
-				> div
-					// Flexbox
-					+box
-					//width: 100%
-					//height: 100%
-					> div
-						+box-flex(1)
-						border-right: 1px solid grey
-						padding: 5px 7px
-					> nav
-						+box-flex(1)
-						> ol
+				bottom: 0
+				width: 550px
+				>
+					img
+						max-width: 100%
+						max-height: 100%
+						cursor: pointer
+					.caption
+						+abs
+						right: 0
+						bottom: 20px
+						width: 400px
+						
+						background-color: rgba(0, 0, 0, 0.5)
+						
+						h1
 							margin: 0
-							list-style-type: none
-							> li
-								display: inline-block
-								vertical-align: middle
-								margin: 5px 0
-								
-								cursor: pointer
-								// Spritesheet mit Nummern
-								$width: 24px
-								$height: 27px
-								background-image: url(../images/layout/Numbersheet.png)
-								width: $width
-								height: $height
-								@for $i from 1 through 6
-									&.n#{$i}
-										background-position: -$width*($i - 1) 0
-									&.n#{$i}.highlighted
-										background-position: -$width*($i - 1) 0 - $height
+						
+						> div
+							// Flexbox
+							+box
+							width: 400px
+							> 
+								div.content
+									+box-flex(1)
+									padding: 5px 7px
+								div.line
+									width: 2px
+									+box
+									+box-align(center)
+									>
+										div
+											//+box-flex(1)
+											border-right: 2px solid grey
+											height: 32px
+											margin: 0 10px
+								nav 
+									+box-flex(1)
+									> ol
+										margin: 0
+										list-style-type: none
+										> li
+											display: inline-block
+											vertical-align: middle
+											margin: 5px 0
+											
+											cursor: pointer
+											// Spritesheet mit Nummern
+											$width: 24px
+											$height: 27px
+											background-image: url(../images/layout/Numbersheet.png)
+											width: $width
+											height: $height
+											@for $i from 1 through 6
+												&.n#{$i}
+													background-position: -$width*($i - 1) 0
+												&.n#{$i}.highlighted
+													background-position: -$width*($i - 1) 0 - $height
 	// Tab: Alle Medien
 	.media > .thumb
 		display: inline-block

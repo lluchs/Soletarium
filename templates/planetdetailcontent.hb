@@ -5,10 +5,11 @@
 	<img>
 	<div class="caption">
 		<div>
-			<div>
+			<div class=content>
 				<h1></h1>
 				<div></div>
 			</div>
+			<div class=line><div></div></div>
 			<nav>
 				<ol></ol>
 			</nav>

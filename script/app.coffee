@@ -35,7 +35,7 @@ class TabMedia
 		                      .unbind('click')
 		                      .click => window.open(getPlanetImage(@media[item], @planet, 'high'), 'fullscreen')
 		
-		content = $('.caption > div > div', this.image)
+		content = $('.caption .content', this.image)
 		$('h1', content).text @media[item].caption
 		$('div', content).text @media[item].desc
 		
@@ -44,13 +44,6 @@ class TabMedia
 		li.eq(item).addClass 'highlighted'
 
 # Funktionen
-
-# wendet Flexie bei Bedarf an
-applyFlexie = (e) ->
-	if not Flexie.flexboxSupported
-		$(e).each ->
-			new Flexie.box
-				target: this
 
 # fügt den Eventhandler hinzu und ruft die Funktion auf
 doResize = (fn) ->
@@ -265,7 +258,6 @@ app = new Deproute
 											tabs = lang.detail[@currentPlanet].meta
 											t = extendDetailTab tabs[getIndex tab, tabs], @currentPlanet
 											@tabMedia = new TabMedia t.media, @currentPlanet
-											applyFlexie $('.planetdetail .caption > div')
 									'media':
 										show: ->
 											media = []
