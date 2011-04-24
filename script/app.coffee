@@ -37,7 +37,7 @@ class TabMedia
 		
 		content = $('.caption .content', this.image)
 		$('h1', content).text @media[item].caption
-		$('div', content).text @media[item].desc
+		$('div', content).html @media[item].desc
 		
 		li = $('.caption li', @image)
 		li.removeClass 'highlighted'
