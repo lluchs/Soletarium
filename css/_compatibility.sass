@@ -1,10 +1,12 @@
 // Hacks
 
 .no-flexbox .planetdetail .image > .caption > div
-	display: table-row
+	display: table
 	> *
 		display: table-cell
 		vertical-align: middle
+	> div.content
+		width: 50%
 	> nav
 		+abs
 		right: 0
