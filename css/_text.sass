@@ -1,5 +1,9 @@
 // Textformatierung
 
+@font-face
+	font-family: 'DejaVu'
+	src: local('DejaVu Sans'), url('../images/layout/DejaVuSans.ttf') format('truetype')
+
 body
 	color: white
 	font-family: Verdana, Arial, sans-serif
@@ -9,9 +13,9 @@ body
 	line-height: 19px
 
 // Astronomische Symbole
-.planet > .name::first-letter
+.planet > .name //::first-letter <- doesn't work in Firefox
 	// Unicode font list from Wikipedia
-	font-family: "Arial Unicode MS", "Microsoft Sans Serif", "Free Sans", "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Sans", "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic", "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL", "Code2000", "Code2001"
+	font-family: "DejaVu", "Arial Unicode MS", "Free Sans", "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic", "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL", "Code2000", "Code2001"
 
 .planetdetail
 	.image .caption
