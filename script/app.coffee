@@ -206,14 +206,13 @@ app = new Deproute
 						e.click ->
 							# highlight
 							li.removeClass 'r2'
-							if i isnt 0
-								e.addClass 'r2'
-								center e
 							
 							feature = e.data 'feature'
 							if feature is 'standard'
 								location.hash = "#/#{currentLang}/main"
 							else
+								e.addClass 'r2'
+								center e
 								location.hash = "#/#{currentLang}/main/feature/#{feature}"
 				sub:
 					'planet':
