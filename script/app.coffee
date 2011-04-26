@@ -195,19 +195,20 @@ app = new Deproute
 					# Features
 					$('#content').append interpolate(templates.features, lang)
 					# Verlinkung anpassen
-					# breitestes Element finden
-					maxwdt = 0
+					center = (e) ->
+						t = $('div', e)
+						t.css 'left', -(t.width() - e.width()) / 2
 					li = $('#features li')
 					li.each (i, e) ->
 						e = $(e)
 						e.addClass 'c' + (i+1)
+						e.hover -> center e
 						e.click ->
 							# highlight
 							li.removeClass 'r2'
 							if i isnt 0
 								e.addClass 'r2'
-								t = $('div', e)
-								t.css 'left', -(t.width() - e.width()) / 2
+								center e
 							
 							feature = e.data 'feature'
 							if feature is 'standard'
