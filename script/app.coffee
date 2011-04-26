@@ -245,12 +245,15 @@ app = new Deproute
 									# Positionierung
 									doResize positionDetails
 									
+									# Transitions
+									$('.planetdetail').css('display', 'none').fadeIn('slow')
+									
 									# bereits ein Tab aufgerufen?
 									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
 									rmResize positionDetails
-									$('.planetdetail').remove()
+									$('.planetdetail').fadeOut 'slow', -> $(this).remove()
 								sub:
 									':tab':
 										show: (tab) ->
