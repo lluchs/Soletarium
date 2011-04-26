@@ -15,10 +15,10 @@ $.getJSON 'data/templates.json', (data) ->
 # Tab-Bilderrotation
 class TabMedia
 	constructor: (@media, @planet) ->
-		@image = $('.planetdetail .image')
+		@image = $('.image', planetdetail())
 		if not @media
 			do @image.hide
-			$('.planetdetail .text').css 'right', 0
+			$('.text', planetdetail()).css 'right', 0
 			return
 		
 		if @media.length > 1
@@ -123,13 +123,17 @@ adjustFooter = ->
 
 # verschiebt das Detailfenster bei Bedarf
 positionDetails = ->
-	e = $('.planetdetail')
+	e = planetdetail()
 	win = $(window).width()
 	max = 950
 	space = 50
 	space = (win - max)/2 if win - 2*space > max
 	e.css 'left', space
 	e.css 'right', space
+
+# gibt das aktuelle Detailfenster zurück
+planetdetail = ->
+	$('.planetdetail:not(.old)')
 
 # gibt den Bildpfad zurück
 getPlanetImage = (img, planet, res) ->
@@ -246,21 +250,21 @@ app = new Deproute
 									doResize positionDetails
 									
 									# Transitions
-									$('.planetdetail').css('display', 'none').fadeIn('slow')
+									planetdetail().css('display', 'none').fadeIn('slow')
 									
 									# bereits ein Tab aufgerufen?
 									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
 									rmResize positionDetails
-									$('.planetdetail').fadeOut 'slow', -> $(this).remove()
+									planetdetail().addClass('old').fadeOut 'slow', -> $(this).remove()
 								sub:
 									':tab':
 										show: (tab) ->
 											text = lang.detail[@currentPlanet][tab]
 											# TODO: error
 											return unless text?
-											$('.planetdetail .content').html interpolate templates.planetdetailcontent,
+											$('.content', planetdetail()).html interpolate templates.planetdetailcontent,
 												text: text
 											tabs = lang.detail[@currentPlanet].meta
 											t = extendDetailTab tabs[getIndex tab, tabs], @currentPlanet
@@ -271,7 +275,7 @@ app = new Deproute
 											for tab in lang.detail[@currentPlanet].meta when tab.media
 												media = media.concat extendDetailTab(tab, @currentPlanet).media
 											
-											$('.planetdetail .content').html interpolate templates.planetdetailmedia,
+											$('.content', planetdetail()).html interpolate templates.planetdetailmedia,
 												planet: @currentPlanet
 												media: for m in media
 													{
@@ -280,7 +284,7 @@ app = new Deproute
 													}
 											
 											planet = @currentPlanet
-											$('.planetdetail .content > .media').children().each (i, e) ->
+											$('.content > .media', planetdetail()).children().each (i, e) ->
 												$(e).click -> window.open(getPlanetImage(media[i], planet, 'high'), 'fullscreen')
 					'feature':
 						sub:
