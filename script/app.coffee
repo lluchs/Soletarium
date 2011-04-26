@@ -252,10 +252,15 @@ app = new Deproute
 									# Transitions
 									planetdetail().css('display', 'none').fadeIn('slow')
 									
+									# Overlay
+									createFeatureOverlay()
+									$('#feature-overlay').click -> location.hash = "#/#{currentLang}/main"
+									
 									# bereits ein Tab aufgerufen?
 									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
+									rmFeatureOverlay()
 									rmResize positionDetails
 									planetdetail().addClass('old').fadeOut 'slow', -> $(this).remove()
 								sub:
