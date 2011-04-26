@@ -204,7 +204,10 @@ app = new Deproute
 						e.click ->
 							# highlight
 							li.removeClass 'r2'
-							e.addClass 'r2' if i isnt 0
+							if i isnt 0
+								e.addClass 'r2'
+								t = $('div', e)
+								t.css 'left', -(t.width() - e.width()) / 2
 							
 							feature = e.data 'feature'
 							if feature is 'standard'

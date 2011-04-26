@@ -128,22 +128,33 @@ nav#dimension
 	right: 0
 	bottom: 0
 	left: 0
-	height: 65px
+	$width: 70px
+	$height: 65px
+	height: $height
 	background-color: rgba(black, 0.5)
 	ul
 		margin: 0
-		margin-right: 65px
+		margin-right: $width
 		text-align: right
 	li
+		position: relative
 		display: inline-block
 		margin: 0 1em
 		cursor: pointer
 		
-		+spritesheet(url('../images/layout/Featuresheet.png'), 70px, 65px, 6, 2)
+		+spritesheet(url('../images/layout/Featuresheet.png'), $width, $height, 6, 2)
 		// highlight
 		&.r2
-			position: relative
 			bottom: 20px
+			> div
+				display: block
+		// text (invisible unless highlighted)
+		> div
+			position: absolute
+			left: 0 // set by script
+			bottom: $height + 5
+			display: none
+			white-space: nowrap
 
 /* Overlay zum Abdecken der Planeten
 
