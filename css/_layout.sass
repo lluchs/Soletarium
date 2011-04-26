@@ -43,6 +43,18 @@
 	bottom: 0
 	left: 0
 
+=spritesheet($sheet, $width, $height, $cols, $rows)
+	background-image: $sheet
+	width: $width
+	height: $height
+	@for $c from 1 through $cols
+		@for $r from 1 through $rows
+			$class: '.r#{$r}'
+			@if $r == 1
+				$class: ''
+			&.c#{$c}#{$class}
+				background-position: -$width*($c - 1) 0 - $height*($r - 1)
+
 // === Layout ===
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
@@ -279,16 +291,7 @@ nav#dimension
 											
 											cursor: pointer
 											// Spritesheet mit Nummern
-											$width: 24px
-											$height: 27px
-											background-image: url(../images/layout/Numbersheet.png)
-											width: $width
-											height: $height
-											@for $i from 1 through 6
-												&.n#{$i}
-													background-position: -$width*($i - 1) 0
-												&.n#{$i}.highlighted
-													background-position: -$width*($i - 1) 0 - $height
+											+spritesheet(url(../images/layout/Numbersheet.png), 24px, 27px, 6, 2)
 	// Tab: Alle Medien
 	.media > .thumb
 		display: inline-block

@@ -25,7 +25,7 @@ class TabMedia
 			ol = $('.caption ol', @image)
 			m = this
 			for i of @media
-				li = $("<li></li>").addClass("n#{+i+1}").click (e) -> m.show $(this).data 'index'
+				li = $("<li></li>").addClass("c#{+i+1}").click (e) -> m.show $(this).data 'index'
 				li.data 'index', i
 				ol.append li
 		
@@ -40,8 +40,8 @@ class TabMedia
 		$('div', content).html @media[item].desc
 		
 		li = $('.caption li', @image)
-		li.removeClass 'highlighted'
-		li.eq(item).addClass 'highlighted'
+		li.removeClass 'r2'
+		li.eq(item).addClass 'r2'
 
 # Funktionen
 
