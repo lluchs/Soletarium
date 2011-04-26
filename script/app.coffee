@@ -200,16 +200,17 @@ app = new Deproute
 					li = $('#features li')
 					li.each (i, e) ->
 						e = $(e)
-						wdt = e.width()
-						maxwdt = wdt if wdt > maxwdt
+						e.addClass 'c' + (i+1)
 						e.click ->
+							# highlight
+							li.removeClass 'r2'
+							e.addClass 'r2' if i isnt 0
+							
 							feature = e.data 'feature'
 							if feature is 'standard'
 								location.hash = "#/#{currentLang}/main"
 							else
 								location.hash = "#/#{currentLang}/main/feature/#{feature}"
-					# alle Elemente bekommen die gleiche Breite
-					li.width maxwdt
 				sub:
 					'planet':
 						sub:

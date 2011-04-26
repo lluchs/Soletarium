@@ -127,13 +127,23 @@ nav#dimension
 	+abs
 	right: 0
 	bottom: 0
-	width: 500px
-	height: 50px
-	background-color: black
+	left: 0
+	height: 65px
+	background-color: rgba(black, 0.5)
+	ul
+		margin: 0
+		margin-right: 65px
+		text-align: right
 	li
 		display: inline-block
 		margin: 0 1em
 		cursor: pointer
+		
+		+spritesheet(url('../images/layout/Featuresheet.png'), 70px, 65px, 6, 2)
+		// highlight
+		&.r2
+			position: relative
+			bottom: 20px
 
 /* Overlay zum Abdecken der Planeten
 
