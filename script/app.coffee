@@ -295,6 +295,7 @@ app = new Deproute
 													{
 														thumb: getPlanetImage(m, @currentPlanet, 'low')
 														caption: m.caption
+														smallcaption: m.smallcaption
 													}
 											
 											planet = @currentPlanet

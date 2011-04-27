@@ -3,7 +3,11 @@
 	<div class="thumb">
 		<img src="{{thumb}}" alt="{{caption}}">
 		<div class="caption">
-			{{caption}}
+			{{#if smallcaption}}
+				{{{smallcaption}}}
+			{{else}}
+				{{caption}}
+			{{/if}}
 		</div>
 	</div>
 	{{/media}}
