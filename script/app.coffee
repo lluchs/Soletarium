@@ -31,9 +31,13 @@ class TabMedia
 		
 		@show 0
 	show: (item) ->
-		@image.children('img').attr('src', getPlanetImage(@media[item], @planet, 'med'))
-		                      .unbind('click')
-		                      .click => window.open(getPlanetImage(@media[item], @planet, 'high'), 'fullscreen')
+		img = @image.children('img').attr('src', getPlanetImage(@media[item], @planet, 'med'))
+		                            .unbind('click')
+		url = getPlanetImage(@media[item], @planet, 'high')
+		if url
+			img.click -> openWindow url
+		else
+			img.css 'cursor', 'default'
 		
 		content = $('.caption .content', this.image)
 		$('h1', content).text @media[item].caption
@@ -135,8 +139,13 @@ positionDetails = ->
 planetdetail = ->
 	$('.planetdetail:not(.old)')
 
+# öffnet in neuem Fenster
+openWindow = (url, options = 'fullscreen') ->
+	window.open url, options if url
+
 # gibt den Bildpfad zurück
 getPlanetImage = (img, planet, res) ->
+	return if res is 'high' and img.nohr
 	auto = (r) -> "#{img.auto}_#{r[0].toUpperCase() + r[1...r.length]}Res.jpg"
 	return "images/tab/#{planet}/#{img[res] or auto(res)}"
 
@@ -290,7 +299,11 @@ app = new Deproute
 											
 											planet = @currentPlanet
 											$('.content > .media', planetdetail()).children().each (i, e) ->
-												$(e).click -> window.open(getPlanetImage(media[i], planet, 'high'), 'fullscreen')
+												url = getPlanetImage(media[i], planet, 'high')
+												if url
+													$(e).click -> openWindow url
+												else
+													$(e).css 'cursor', 'default'
 					'feature':
 						sub:
 							'habzone':
