@@ -31,13 +31,21 @@ class TabMedia
 		
 		@show 0
 	show: (item) ->
-		img = @image.children('img').attr('src', getPlanetImage(@media[item], @planet, 'med'))
-		                            .unbind('click')
-		url = getPlanetImage(@media[item], @planet, 'high')
-		if url
-			img.click -> openWindow url
+		img = @image.children 'img'
+		iframe = @image.children 'iframe'
+		video = @media[item].video
+		if video
+			img.hide()
+			iframe.show().attr 'src', "http://www.youtube.com/embed/#{video}?rel=0"
 		else
-			img.css 'cursor', 'default'
+			iframe.attr('src', '').hide()
+			img.show().attr('src', getPlanetImage(@media[item], @planet, 'med'))
+			   .unbind('click')
+			url = getPlanetImage(@media[item], @planet, 'high')
+			if url
+				img.click -> openWindow url
+			else
+				img.css 'cursor', 'default'
 		
 		content = $('.caption .content', this.image)
 		$('h1', content).text @media[item].caption
