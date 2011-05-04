@@ -158,7 +158,7 @@ openWindow = (url, options = 'fullscreen') ->
 # gibt den Bildpfad zurück
 getPlanetImage = (img, planet, res) ->
 	return if res is 'high' and img.nohr
-	auto = (r) -> "#{img.auto}_#{r[0].toUpperCase() + r[1...r.length]}Res.jpg"
+	auto = (r) -> "#{img.auto or img.video}_#{r[0].toUpperCase() + r[1...r.length]}Res.jpg"
 	return "images/tab/#{planet}/#{img[res] or auto(res)}"
 
 # gibt den Index zurück
@@ -312,7 +312,7 @@ app = new Deproute
 											
 											planet = @currentPlanet
 											$('.content > .media', planetdetail()).children().each (i, e) ->
-												url = getPlanetImage(media[i], planet, 'high')
+												url = media[i].yt and "http://youtu.be/" + media[i].yt or getPlanetImage(media[i], planet, 'high')
 												if url
 													$(e).click -> openWindow url
 												else
