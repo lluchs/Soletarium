@@ -1,2 +1,4 @@
 AddCharset UTF-8 .html .css .js
 AddType 'application/json; charset=UTF-8' json
+AddType video/mp4 .mp4
+AddType video/webm .webm

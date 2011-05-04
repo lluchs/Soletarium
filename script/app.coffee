@@ -32,13 +32,17 @@ class TabMedia
 		@show 0
 	show: (item) ->
 		img = @image.children 'img'
-		iframe = @image.children 'iframe'
-		video = @media[item].video
-		if video
+		video = @image.children 'video'
+		vfile = @media[item].video
+		if vfile
 			img.hide()
-			iframe.show().attr 'src', "http://www.youtube.com/embed/#{video}?rel=0"
+			video.replaceWith interpolate templates.video,
+				url: "images/tab/#{@planet}/" + vfile
+				youtube: @media[item].yt
+				width: 550
+				height: 309
 		else
-			iframe.attr('src', '').hide()
+			video.empty().hide()
 			img.show().attr('src', getPlanetImage(@media[item], @planet, 'med'))
 			   .unbind('click')
 			url = getPlanetImage(@media[item], @planet, 'high')
