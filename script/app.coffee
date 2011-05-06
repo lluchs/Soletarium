@@ -32,7 +32,7 @@ class TabMedia
 		@show 0
 	show: (item) ->
 		img = @image.children 'img'
-		video = @image.children 'video'
+		video = $('.video', @image)
 		vfile = @media[item].video
 		if vfile
 			img.hide()
@@ -41,6 +41,12 @@ class TabMedia
 				youtube: @media[item].yt
 				width: 550
 				height: 309
+			# old element is replaced now
+			video = $('.video', @image)
+			video.hover ->
+				video.children('.yt').addClass 'show'
+			, ->
+				video.children('.yt').removeClass 'show'
 		else
 			video.empty().hide()
 			img.show().attr('src', getPlanetImage(@media[item], @planet, 'med'))
@@ -312,7 +318,7 @@ app = new Deproute
 											
 											planet = @currentPlanet
 											$('.content > .media', planetdetail()).children().each (i, e) ->
-												url = media[i].yt and "http://youtu.be/" + media[i].yt or getPlanetImage(media[i], planet, 'high')
+												url = media[i].yt and 'http://youtu.be/' + media[i].yt or getPlanetImage(media[i], planet, 'high')
 												if url
 													$(e).click -> openWindow url
 												else

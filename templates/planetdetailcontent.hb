@@ -1,10 +1,10 @@
-<div class="text">
+<div class=text>
 	{{{text}}}
 </div>
-<div class="image">
+<div class=image>
 	<img>
-	<video></video>
-	<div class="caption">
+	<div class=video></div>
+	<div class=caption>
 		<div>
 			<div class=content>
 				<h1></h1>
