@@ -65,6 +65,21 @@ class TabMedia
 		li.removeClass 'r2'
 		li.eq(item).addClass 'r2'
 
+# Handlebars-Helper
+
+registerPartials = ->
+	# Header
+	Handlebars.registerPartial 'header', templates.header
+
+# Versionsliste
+Handlebars.registerHelper 'version', (block) ->
+	(for version in @versions
+		v = (key for key of version)[0]
+		block
+			num: v
+			v: version[v]
+	).join ''
+
 # Funktionen
 
 # fügt den Eventhandler hinzu und ruft die Funktion auf
@@ -370,9 +385,15 @@ app = new Deproute
 									e.css 'right', padding.right
 								hide: ->
 									do $('#temperature').remove
+			'versions':
+				show: ->
+					$('#container').css('display', 'table').html interpolate templates.versions, lang
+				hide: ->
+					$('#container').css 'display', 'block'
 window.app = app # export
 do go = ->
 	if general? and templates?
+		registerPartials()
 		app.run '#/de/main'
 		window.general = general
 		window.templates = templates
