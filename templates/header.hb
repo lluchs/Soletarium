@@ -1,7 +1,7 @@
 {{#header}}
 	<header class=logo>
 		<div>
-			<img src="images/layout/{{logo}}" alt="Soletarium - {{subtitle}}">
+			<a href="{{link}}"><img src="images/layout/{{logo}}" alt="Soletarium - {{subtitle}}"></a>
 		</div>
 	</header>
 {{/header}}
