@@ -7,6 +7,12 @@
 body
 	color: white
 	font-family: Verdana, Arial, sans-serif
+	font-size: 14px
+
+.serif-heading
+	font-family: Times, serif
+	font-weight: normal
+	text-transform: uppercase
 
 .small
 	font-size: 12px
@@ -18,6 +24,10 @@ body
 	font-family: "DejaVu", "Arial Unicode MS", "Free Sans", "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic", "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL", "Code2000", "Code2001"
 
 .planetdetail
+	.tabs a
+		@extend .serif-heading
+		font-size: 16px
+		text-decoration: none
 	.image .caption
 		@extend .small
 		h1
@@ -25,6 +35,8 @@ body
 			text-transform: uppercase
 	.media .caption
 		@extend .small
+	.rbar h1
+		@extend .serif-heading
 
 #features
 	font-size: 12px
@@ -34,7 +46,5 @@ body
 	@extend .small
 	font-family: Arial, sans-serif
 	h1
-		font-family: Times, serif
-		font-weight: normal
+		@extend .serif-heading
 		font-size: 1.5em
-		text-transform: uppercase
