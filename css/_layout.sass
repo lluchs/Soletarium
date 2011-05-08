@@ -236,23 +236,25 @@ nav#dimension
 			background-color: #811616
 			background-image: url('../images/layout/tabbg.png')
 			background-repeat: repeat-x
-			border-top-left-radius: 10px
-			padding-left: 10px
+			border-top-left-radius: $bradius
 			> ul
 				margin: 0
 				padding: 0
 				padding-bottom: 0
+				text-align: right
 			.tab
-				float: left
+				display: inline-block
 				height: 35px
 				list-style-type: none
 				white-space: nowrap
+				text-align: center
 				background-image: url('../images/layout/tabbg.png')
 				background-repeat: repeat-x
+				&:first-child
+					border-top-left-radius: $bradius
 			a
-				float: left
+				display: inline-block
 				padding: 0.5em 1em
-				color: white
 		> .content
 			+abs-fill
 			top: 2.5em

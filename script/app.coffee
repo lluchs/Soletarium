@@ -291,6 +291,20 @@ app = new Deproute
 									# Positionierung
 									doResize positionDetails
 									
+									# Tabs nehmen gesamten Platz ein
+									tabc = $('.tabs', planetdetail())
+									tabs = $('.tab', tabc)
+									# tabc has 10px padding-left
+									cwidth = tabc.width()
+									width = 0
+									tabs.each (i, e) ->
+										width += $(e).width()
+									newwidth = 0
+									tabs.each (i, e) ->
+										wdt = $(e).width() * cwidth / width
+										newwidth += wdt
+										$(e).width wdt
+									
 									# Transitions
 									planetdetail().css('display', 'none').fadeIn('slow')
 									
