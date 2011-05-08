@@ -4,8 +4,10 @@
 	font-family: 'DejaVu'
 	src: local('DejaVu Sans'), url('../images/layout/DejaVuSans.ttf') format('truetype')
 
+$color: #ededed
+
 body
-	color: white
+	color: $color
 	font-family: Verdana, Arial, sans-serif
 	font-size: 14px
 
@@ -28,7 +30,7 @@ body
 		@extend .serif-heading
 		font-size: 15px
 		text-decoration: none
-		color: white
+		color: $color
 	.image .caption
 		@extend .small
 		h1
@@ -44,7 +46,7 @@ body
 			font-weight: bold
 			font-size: 28px
 			text-decoration: none
-			color: white
+			color: $color
 
 #features
 	font-size: 12px
