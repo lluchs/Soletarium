@@ -248,7 +248,9 @@ nav#dimension
 				text-align: right
 			.tab
 				display: inline-block
-				height: 35px
+				$hgt: 35px
+				height: $hgt
+				line-height: $hgt
 				list-style-type: none
 				white-space: nowrap
 				text-align: center
@@ -256,9 +258,6 @@ nav#dimension
 				background-repeat: repeat-x
 				&:first-child
 					border-top-left-radius: $bradius
-			a
-				display: inline-block
-				padding: 0.5em 1em
 		> .content
 			+abs-fill
 			top: 2.5em
