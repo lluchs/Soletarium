@@ -247,6 +247,7 @@ nav#dimension
 				padding-bottom: 0
 				text-align: right
 			.tab
+				position: relative
 				display: inline-block
 				$hgt: 35px
 				height: $hgt
@@ -258,6 +259,15 @@ nav#dimension
 				background-repeat: repeat-x
 				&:first-child
 					border-top-left-radius: $bradius
+					a
+						border-top-left-radius: $bradius
+						// weird space
+						left: -4px !important
+				a
+					&.fill
+						+abs-fill
+					&:hover
+						background-color: rgba(white, 0.2)
 		> .content
 			+abs-fill
 			top: 2.5em

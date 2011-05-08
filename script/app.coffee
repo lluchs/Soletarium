@@ -291,6 +291,7 @@ app = new Deproute
 										wdt = $(e).width() * cwidth / width
 										newwidth += wdt
 										$(e).width wdt
+										$(e).children().addClass 'fill'
 									
 									# Transitions
 									planetdetail().css('display', 'none').fadeIn('slow')
