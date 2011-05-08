@@ -225,9 +225,10 @@ nav#dimension
 	background-color: rgba(0, 0, 0, 0.85)
 	$bradius: 15px
 	border-radius: $bradius
+	$rwidth: 60px
 	> .left
 		+abs-fill
-		right: 3em
+		right: $rwidth
 		> .tabs
 			position: relative
 			width: 100%
@@ -355,7 +356,7 @@ nav#dimension
 				border-color: grey
 	// Leiste auf der rechten Seite
 	> .rbar
-		width: 3em
+		width: $rwidth
 		+abs
 		top: 0
 		right: 0
@@ -374,7 +375,7 @@ nav#dimension
 			left: 0.75em
 		a
 			+abs
-			right: 1.5em
+			right: $rwidth/2
 			bottom: 0
 
 // Footer
