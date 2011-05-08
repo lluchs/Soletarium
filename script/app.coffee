@@ -158,16 +158,6 @@ adjustFooter = ->
 	# Inhalt anpassen
 	$('#content').height hgt - footer.height()
 
-# verschiebt das Detailfenster bei Bedarf
-positionDetails = ->
-	e = planetdetail()
-	win = $(window).width()
-	max = 950
-	space = 50
-	space = (win - max)/2 if win - 2*space > max
-	e.css 'left', space
-	e.css 'right', space
-
 # gibt das aktuelle Detailfenster zurück
 planetdetail = ->
 	$('.planetdetail:not(.old)')
@@ -288,9 +278,6 @@ app = new Deproute
 										tabs: tabs
 										lang: currentLang
 									
-									# Positionierung
-									doResize positionDetails
-									
 									# Tabs nehmen gesamten Platz ein
 									tabc = $('.tabs', planetdetail())
 									tabs = $('.tab', tabc)
@@ -317,7 +304,6 @@ app = new Deproute
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
 									rmFeatureOverlay()
-									rmResize positionDetails
 									planetdetail().addClass('old').fadeOut 'slow', -> $(this).remove()
 								sub:
 									':tab':
