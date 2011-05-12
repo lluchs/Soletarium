@@ -43,11 +43,16 @@ class Deproute
 				# try to call the route
 				@getRoute(@current[0..i])?.hide?.apply this
 		# Dann nötige Teile erstellen (inklusive Funktion des aktuellen Pfads)
+		show = false
 		for i in [diff...path.length]
 			# add function to the queue
 			fn = @getRoute(path[0..i])?.show
 			if fn?
 				@queue.add fn, this, [@param]
+			show = true
+		# invalid route?
+		@notfound() if show and not fn?
+		
 		# Neuer Pfad speichern
 		@current = path
 		# debug
@@ -93,6 +98,12 @@ class Deproute
 		
 		findMatch path, @routes
 	
+	notfound: ->
+		# debug
+		console.log "Error: route #{location.hash} not found"
+		
+		location.hash = @defaultRoute
+	
 	runHash: ->
 		route = location.hash
 		# cut the #/
@@ -100,6 +111,7 @@ class Deproute
 	
 	# run it!
 	run: (defaultRoute) ->
+		@defaultRoute = defaultRoute
 		location.hash or= defaultRoute
 		app = this
 		window.addEventListener 'hashchange', (-> app.runHash.apply app), false
