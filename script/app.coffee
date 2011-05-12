@@ -239,6 +239,9 @@ app = new Deproute
 						e = $(e)
 						e.addClass 'c' + (i+1)
 						e.hover -> center e
+						e.bind 'highlight', ->
+							e.addClass 'r2'
+							center e
 						e.click ->
 							# highlight
 							li.removeClass 'r2'
@@ -248,8 +251,7 @@ app = new Deproute
 							if feature is 'standard' or feature is prev
 								location.hash = "#/#{currentLang}/main"
 							else
-								e.addClass 'r2'
-								center e
+								e.trigger 'highlight'
 								location.hash = "#/#{currentLang}/main/feature/#{feature}"
 				sub:
 					'planet':
@@ -343,6 +345,16 @@ app = new Deproute
 												else
 													$(e).css 'cursor', 'default'
 					'feature':
+						show: ->
+							li = $('#features li')
+							if not li.hasClass 'r2'
+								feature = location.hash.match(/feature\/(\w+)/)?[1]
+								if feature
+									li.each (i, e) ->
+										e = $(e)
+										e.trigger 'highlight' if e.data('feature') is feature
+						hide: ->
+							$('#features li').removeClass 'r2'
 						sub:
 							'habzone':
 								show: ->
