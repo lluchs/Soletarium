@@ -53,7 +53,7 @@ class Deproute
 		# debug
 		console.log "Route: #{path.join '/'}"
 		# tracking
-		_gaq?.push ['_trackPageview', path]
+		_gaq?.push ['_trackPageview', path.join '/']
 	
 	# returns the matching route
 	getRoute: (path) ->
