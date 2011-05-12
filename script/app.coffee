@@ -334,7 +334,9 @@ app = new Deproute
 											
 											planet = @currentPlanet
 											$('.content > .media', planetdetail()).children().each (i, e) ->
-												url = media[i].yt and 'http://youtu.be/' + media[i].yt or getPlanetImage(media[i], planet, 'high')
+												url = media[i].yt and 'http://youtu.be/' + media[i].yt or
+												      getPlanetImage(media[i], planet, 'high') or
+												      getPlanetImage(media[i], planet, 'med')
 												if url
 													$(e).click -> openWindow url
 												else
