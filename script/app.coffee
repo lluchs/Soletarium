@@ -195,8 +195,7 @@ rmFeatureOverlay = ->
 app = new Deproute
 	':lang':
 		show: (l) ->
-			# TODO: Fehlermeldung
-			return if l != 'de'
+			return @notfound() if l != 'de'
 			# Sprache bereits geladen
 			if currentLang isnt l
 				do @queue.pause
