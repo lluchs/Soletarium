@@ -345,6 +345,7 @@ nav#dimension
 										list-style-type: none
 										text-align: right
 										> li
+											position: relative
 											display: inline-block
 											vertical-align: middle
 											margin: 5px 1px
@@ -352,6 +353,10 @@ nav#dimension
 											cursor: pointer
 											// Spritesheet mit Nummern
 											+spritesheet(url(../images/layout/Numbersheet.png), 24px, 27px, 6, 2)
+											> div
+												+abs-fill
+												&:hover
+													background-color: rgba(white, 0.2)
 	// Tab: Alle Medien
 	.media > .thumb
 		display: inline-block
