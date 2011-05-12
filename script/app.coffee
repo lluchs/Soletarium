@@ -262,8 +262,8 @@ app = new Deproute
 								show: (planet) ->
 									# index herausfinden
 									id = getIndex planet, general.planets
-									# TODO: error
-									return unless id?
+									
+									return @notfound() unless id?
 									
 									@currentPlanet = planet
 									loc = location.hash.match(/.+\/planet\/\w+/)[0]
@@ -315,8 +315,8 @@ app = new Deproute
 									':tab':
 										show: (tab) ->
 											text = lang.detail[@currentPlanet][tab]
-											# TODO: error
-											return unless text?
+											
+											return @notfound() unless text?
 											$('.content', planetdetail()).html interpolate templates.planetdetailcontent,
 												text: text
 											tabs = lang.detail[@currentPlanet].meta
