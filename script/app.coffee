@@ -243,8 +243,9 @@ app = new Deproute
 							# highlight
 							li.removeClass 'r2'
 							
+							prev = location.hash.match(/feature\/(\w+)/)?[1]
 							feature = e.data 'feature'
-							if feature is 'standard'
+							if feature is 'standard' or feature is prev
 								location.hash = "#/#{currentLang}/main"
 							else
 								e.addClass 'r2'
