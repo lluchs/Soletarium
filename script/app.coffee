@@ -221,6 +221,9 @@ app = new Deproute
 							$('img', this).attr('src', "images/planets/#{planet}_Hover.png")
 						$(e).mouseleave ->
 							$('img', this).attr('src', "images/planets/#{planet}.png")
+						
+						# only clickable if there is data to show
+						$(e).attr('onclick', '').css('cursor', 'default') unless general.detail.planets[planet]?
 					
 					# Footer
 					doResize adjustFooter
