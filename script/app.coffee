@@ -430,6 +430,9 @@ app = new Deproute
 					$('#container').css('display', 'table').html interpolate templates.versions, lang
 				hide: ->
 					$('#container').css 'display', 'block'
+			'meta':
+				show: ->
+					$('#container').html interpolate templates.meta, lang
 window.app = app # export
 do go = ->
 	if general? and templates?
