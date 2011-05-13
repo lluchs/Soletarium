@@ -123,6 +123,14 @@ positionPlanets = ->
 		xpos = calcPlanetX general.planets[i].xpos
 		setPlanetPos(i, xpos, ypos)
 
+# positioniert das Detailfenster vertikal
+positionDetails = ->
+	e = $('header.logo')
+	header = e.offset().top + e.height()
+	footer = $('#features').offset().top
+	detail = planetdetail()
+	detail.css 'top', (footer + header - detail.height()) / 2
+
 # positioniert die habitale Zone, ähnlich wie Planeten
 positionHabZone = ->
 	habzone = $('#habzone')
@@ -298,6 +306,9 @@ app = new Deproute
 										$(e).width wdt
 										$(e).children().addClass 'fill'
 									
+									# vertical positioning
+									doResize positionDetails
+									
 									# Transitions
 									planetdetail().css('display', 'none').fadeIn('slow')
 									
@@ -311,6 +322,7 @@ app = new Deproute
 								hide: ->
 									rmFeatureOverlay()
 									planetdetail().addClass('old').fadeOut 'slow', -> $(this).remove()
+									rmResize positionDetails
 								sub:
 									':tab':
 										show: (tab) ->
