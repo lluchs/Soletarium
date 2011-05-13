@@ -170,6 +170,10 @@ adjustFooter = ->
 planetdetail = ->
 	$('.planetdetail:not(.old)')
 
+# Highlight für ausgewählter Tab
+highlightTab = (tab) ->
+	$('.tab', planetdetail()).removeClass('selected').eq(tab).addClass 'selected'
+
 # öffnet in neuem Fenster
 openWindow = (url, options = 'fullscreen') ->
 	window.open url, options if url
@@ -278,8 +282,10 @@ app = new Deproute
 									
 									# Tabs auslesen
 									tabs = []
-									for tdata in lang.detail[planet].meta
+									@tabs = {}
+									for tdata, i in lang.detail[planet].meta
 										tdata = extendDetailTab tdata, planet
+										@tabs[tdata.id] = i
 										tabs.push
 											style: "background-color: #{tdata.color}"
 											location: "#{loc}/#{tdata.id}"
@@ -329,6 +335,9 @@ app = new Deproute
 											text = lang.detail[@currentPlanet][tab]
 											
 											return @notfound() unless text?
+											
+											highlightTab @tabs[tab]
+											
 											$('.content', planetdetail()).html interpolate templates.planetdetailcontent,
 												text: text
 											tabs = lang.detail[@currentPlanet].meta
@@ -336,6 +345,7 @@ app = new Deproute
 											@tabMedia = new TabMedia t.media, @currentPlanet
 									'media':
 										show: ->
+											highlightTab @tabs['media']
 											media = []
 											for tab in lang.detail[@currentPlanet].meta when tab.media
 												media = media.concat extendDetailTab(tab, @currentPlanet).media

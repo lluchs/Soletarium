@@ -29,11 +29,14 @@ a
 	font-family: "DejaVu", "Arial Unicode MS", "Free Sans", "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic", "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL", "Code2000", "Code2001"
 
 .planetdetail
-	.tabs a
-		@extend .serif-heading
-		font-size: 15px
-		text-decoration: none
-		color: $color
+	.tabs 
+		a
+			@extend .serif-heading
+			font-size: 15px
+			text-decoration: none
+			color: $color
+		.selected a
+			font-weight: bold
 	.image .caption
 		@extend .small
 		h1
