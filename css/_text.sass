@@ -14,6 +14,20 @@ body
 a
 	color: #52b1f0
 
+h1, dt
+	font-size: 18px
+	font-weight: bold
+	text-transform: uppercase
+	margin-top: 0.67em
+	margin-bottom: 0.44em
+
+h1 + p
+	margin-top: 0
+
+h2
+	font-size: 15px
+	font-weight: normal
+
 .serif-heading
 	font-family: Times, serif
 	font-weight: normal
@@ -29,6 +43,9 @@ a
 	font-family: "DejaVu", "Arial Unicode MS", "Free Sans", "Gentium Plus", "Gentium Basic", "Gentium", "GentiumAlt", "DejaVu Serif", "Free Serif", "TITUS Cyberbit Basic", "Bitstream Cyberbit", "Bitstream CyberBase", "Doulos SIL", "Code2000", "Code2001"
 
 .planetdetail
+	h1, dt
+		font-size: 15px
+		margin-top: 0.67em*2
 	.tabs 
 		a
 			@extend .serif-heading
@@ -39,9 +56,6 @@ a
 			font-weight: bold
 	.image .caption
 		@extend .small
-		h1
-			font-size: 1.5em
-			text-transform: uppercase
 	.media .caption
 		@extend .small
 	.rbar 
@@ -64,6 +78,10 @@ a
 #main > footer, #versions
 	@extend .small
 	font-family: Arial, sans-serif
+
+#meta
 	h1
-		@extend .serif-heading
-		font-size: 1.5em
+		margin-bottom: 7px
+		font-size: 22px
+	h1 + p
+		margin-top: 0
