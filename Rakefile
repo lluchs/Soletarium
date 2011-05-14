@@ -135,7 +135,7 @@ end
 desc 'Compiles SASS to CSS'
 begin
 	style = "#{build('css')}/style.css"
-	task :css => [style, build('css')]
+	task :css => [build('css'), style]
 	file style do
 		sh "sass css/style.sass #{style}"
 	end
