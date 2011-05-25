@@ -249,6 +249,7 @@ app = new Deproute
 						t = $('div', e)
 						t.css 'left', -(t.width() - e.width()) / 2
 					li = $('#features li')
+					t = this
 					li.each (i, e) ->
 						e = $(e)
 						e.addClass 'c' + (i+1)
@@ -260,7 +261,7 @@ app = new Deproute
 							# highlight
 							li.removeClass 'r2'
 							
-							prev = location.hash.match(/feature\/(\w+)/)?[1]
+							prev = t.path[3]
 							feature = e.data 'feature'
 							if feature is 'standard' or feature is prev
 								location.hash = "#/#{currentLang}/main"
@@ -278,7 +279,7 @@ app = new Deproute
 									return @notfound() unless id?
 									
 									@currentPlanet = planet
-									loc = location.hash.match(/.+\/planet\/\w+/)[0]
+									loc = '#/' + @path[0...4].join '/'
 									
 									# Tabs auslesen
 									tabs = []
@@ -323,7 +324,7 @@ app = new Deproute
 									$('#feature-overlay').click -> location.hash = "#/#{currentLang}/main"
 									
 									# bereits ein Tab aufgerufen?
-									if not location.hash.match(/.+\/planet\/\w+\/(\w+)/)?[1]
+									if not @path[5]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
 									rmFeatureOverlay()
@@ -372,7 +373,7 @@ app = new Deproute
 						show: ->
 							li = $('#features li')
 							if not li.hasClass 'r2'
-								feature = location.hash.match(/feature\/(\w+)/)?[1]
+								feature = @path[3]
 								if feature
 									li.each (i, e) ->
 										e = $(e)

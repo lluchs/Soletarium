@@ -29,6 +29,8 @@ class Deproute
 	runRoute: (path) ->
 		# reset the queue
 		@queue = new Queue
+		# save path for usage in show/hide functions
+		@path = path
 		# get difference
 		diff = 0
 		# this is probably a bit hacky
