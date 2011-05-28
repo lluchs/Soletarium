@@ -238,6 +238,10 @@ app = new Deproute
 					
 					# Footer
 					doResize adjustFooter
+					# call after images finish loading
+					$('#main > footer img').load ->
+						adjustFooter()
+						$(this).unbind 'load'
 					
 					# Position
 					doResize positionPlanets
