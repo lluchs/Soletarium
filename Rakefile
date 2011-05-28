@@ -67,7 +67,7 @@ def jsonTask srcGlob, targetFile, taskSymbol, baseDir = nil
 			# extract yaml
 			if f =~ /\.yaml$/
 				begin
-					content = YAML.load_file(f)
+					content = YAML::load getContents f
 				rescue
 					# add the file to exceptions
 					raise $!, "In file #{f}: #{$!}", caller
@@ -87,7 +87,8 @@ end
 # returns the contents of the file filename
 def getContents(filename)
 	File.open(filename, 'r') do |f|
-		return f.gets nil
+		# read as UTF-8 and remove BOM
+		return f.read.force_encoding('UTF-8').gsub("\xEF\xBB\xBF".force_encoding('UTF-8'), '')
 	end
 end
 
