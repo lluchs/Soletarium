@@ -54,6 +54,7 @@ class TabMedia
 			url = getPlanetImage(@media[item], @planet, 'high')
 			if url
 				img.click -> openWindow url
+				img.css 'cursor', 'pointer'
 			else
 				img.css 'cursor', 'default'
 		
