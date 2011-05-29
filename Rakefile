@@ -2,6 +2,7 @@ require 'rubygems'
 require 'json'
 require 'yaml'
 require 'rake/clean'
+require 'net/sftp'
 
 BUILD_DIR = 'build'
 CLEAN.include BUILD_DIR
@@ -98,6 +99,31 @@ def writeJSON(filename, data)
 		f.puts JSON.fast_generate(data)
 	end
 	puts filename
+end
+
+desc 'Uploads the build directory to the server'
+task :upload => :default do
+	server, user, password, base = getContents('.sftp').split "\n"
+	Net::SFTP.start(server, user, :password => password) do |sftp|
+		FileList['build/**/*.*'].each do |f|
+			rf = base + f
+			rstat = nil
+			lstat = File.stat f
+			begin
+				sftp.file.open rf do |sftpfile|
+					rstat = sftpfile.stat
+				end
+			rescue Net::SFTP::StatusException
+			end
+			#puts f, rf, lstat.mtime.to_s + ' | ' + Time.at(rstat.mtime).to_s, lstat.size.to_s + ' | ' + rstat.size.to_s
+			# File modified?
+			if !rstat or lstat.mtime.to_i > rstat.mtime and (lstat.size < 10000 or lstat.size != rstat.size or File.extname(f) == '.json')
+				puts 'Uploading ' + f
+				sftp.upload f, rf
+			end
+			#puts '----'
+		end
+	end
 end
 
 desc 'Creates language JSON files'
