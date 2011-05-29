@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'json'
 require 'yaml'
+require 'erb'
 require 'rake/clean'
 require 'net/sftp'
 
@@ -126,6 +127,24 @@ task :upload => :default do
 	end
 end
 
+desc 'Creates feed'
+task :feed
+
+FileList[build 'data/*.json'].exclude(/\w{3}\.json$/).each do |f|
+	lang = File.basename f, '.json'
+	feed = ERB.new getContents 'ruby/feed.rxml'
+	versions = JSON.parse!(getContents f)['versions']
+	b = binding
+	outputfile = build "feed-#{lang}.xml"
+	file outputfile => [f, 'ruby/feed.rxml'] do
+		File.open outputfile, 'w' do |out|
+			out.puts feed.result b
+		end
+		puts outputfile
+	end
+	task :feed => outputfile
+end
+
 desc 'Creates language JSON files'
 task :lang => build('data')
 
@@ -179,4 +198,4 @@ task :files => [build('images')]
 dirCopyTask 'images/**/*.*', 'images', 'images', :files
 copyTask 'index.html', '', :files
 
-task :default => [:coffee, :css, :lib, :general, :lang, :template, :files]
+task :default => [:coffee, :css, :lib, :general, :lang, :template, :files, :feed]

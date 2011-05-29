@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Soletarium</title>
+	<subtitle><%= versions['title'] %></subtitle>
+	<link href="http://soletarium.org/feed.xml" rel="self" />
+	<link href="http://soletarium.org/#/<%= lang %>/versions" />
+	<id>http://soletarium.org/<%= lang %>/versions</id>
+	<icon>images/layout/favicon.ico</icon>
+	<updated><%= versions['versions'][0].values[0][0] %>T0:00:00-00:00</updated>
+	<author>
+		<name>Soletarium-Team</name>
+		<uri>http://soletarium.org/</uri>
+		<email>info@soletarium.org</email>
+	</author>
+	<% versions['versions'].each do |v| 
+		version = v.keys[0]
+		data = v.values[0]
+	%>
+	<entry>
+		<title>Version <%= version %></title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,<%= data[0] + ':' + version %></id>
+		<published><%= data[0] %>T0:00:00-00:00</published>
+		<updated><%= data[0] %>T0:00:00-00:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			<% data[1..-1].each do |li| %>
+				<p><%= li %></p>
+			<% end %>
+		</div></content>
+	</entry>
+	<% end %>
+</feed>

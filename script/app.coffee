@@ -434,6 +434,7 @@ app = new Deproute
 			'versions':
 				show: ->
 					$('#container').css('display', 'table').html interpolate templates.versions, lang
+					$('#container ul li:first-child').remove() # *cough*
 				hide: ->
 					$('#container').css 'display', 'block'
 			'meta':
