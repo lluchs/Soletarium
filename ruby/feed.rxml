@@ -3,11 +3,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title>Soletarium</title>
 	<subtitle><%= versions['title'] %></subtitle>
-	<link href="http://soletarium.org/feed.xml" rel="self" />
+	<link href="http://soletarium.org/feed-<%= lang %>.xml" rel="self" />
 	<link href="http://soletarium.org/#/<%= lang %>/versions" />
 	<id>http://soletarium.org/<%= lang %>/versions</id>
 	<icon>images/layout/favicon.ico</icon>
-	<updated><%= versions['versions'][0].values[0][0] %>T0:00:00-00:00</updated>
+	<updated><%= versions['versions'][0].values[0][0] %></updated>
 	<author>
 		<name>Soletarium-Team</name>
 		<uri>http://soletarium.org/</uri>
@@ -20,9 +20,9 @@
 	<entry>
 		<title>Version <%= version %></title>
 		<link href="http://soletarium.org/" />
-		<id>tag:soletarium.org,<%= data[0] + ':' + version %></id>
-		<published><%= data[0] %>T0:00:00-00:00</published>
-		<updated><%= data[0] %>T0:00:00-00:00</updated>
+		<id>tag:soletarium.org,<%= data[0][0..9] + ':' + version.gsub(' ', '') %></id>
+		<published><%= data[0] %></published>
+		<updated><%= data[0] %></updated>
 		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
 			<% data[1..-1].each do |li| %>
 				<p><%= li %></p>
