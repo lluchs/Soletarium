@@ -273,11 +273,12 @@ nav#dimension
 				background-repeat: repeat-x
 				outline: none
 				&:first-child
+					// weird space
+					+abs
 					border-top-left-radius: $bradius
 					a
+						width: 105%
 						border-top-left-radius: $bradius
-						// weird space
-						left: -4px !important
 				a
 					&.fill
 						+abs-fill
