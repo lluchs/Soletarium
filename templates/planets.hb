@@ -1,6 +1,6 @@
 <div id="planets">
-	<div class="bg" id="bg-end"><img src="images/layout/bg-end.svg" alt=""></div>
-	<div class="bg" id="bg-sun"><img src="images/layout/bg-sun.svg" alt=""></div>
+	<div class="bg" id="bg-end"><div></div></div>
+	<div class="bg" id="bg-sun"><div></div></div>
 	{{#planets}}
 	<div class="planet" id="{{id}}" onclick="window.location = '#/{{../lang}}/main/planet/{{id}}'">
 		{{#moons}}

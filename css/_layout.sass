@@ -122,15 +122,34 @@ nav#dimension
 #planets
 	background-image: url(../images/layout/bg.png)
 	background-color: black
-	.bg
-		+abs
-		width: 100%
-		height: 100%
-		overflow: hidden
 
-#bg-end img
+$bg-hgt: 798px
+#bg-end
 	+abs
 	right: 0
+	$grad: 140px
+	width: 798px
+	height: $bg-hgt
+	background-image: url(../images/layout/bg-end.jpg)
+	div
+		+abs
+		left: -$grad
+		width: $grad
+		height: $bg-hgt
+		background-image: url(../images/layout/bg-end-gradient.png)
+
+#bg-sun
+	+abs
+	$grad: 155px
+	width: 500px
+	height: $bg-hgt
+	background-image: url(../images/layout/bg-sun.jpg)
+	div
+		+abs
+		right: -$grad
+		width: $grad
+		height: $bg-hgt
+		background-image: url(../images/layout/bg-sun-gradient.png)
 
 .planet
 	+abs
