@@ -118,7 +118,7 @@ task :upload => :default do
 			end
 			#puts f, rf, lstat.mtime.to_s + ' | ' + Time.at(rstat.mtime).to_s, lstat.size.to_s + ' | ' + rstat.size.to_s
 			# File modified?
-			if !rstat or lstat.mtime.to_i > rstat.mtime and (lstat.size < 10000 or lstat.size != rstat.size or File.extname(f) == '.json')
+			if !rstat || lstat.mtime.to_i > rstat.mtime && (lstat.size < 10000 || lstat.size != rstat.size || File.extname(f) == '.json')
 				puts 'Uploading ' + f
 				sftp.upload f, rf
 			end
