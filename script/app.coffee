@@ -386,6 +386,35 @@ app = new Deproute
 						hide: ->
 							$('#features li').removeClass 'r2'
 						sub:
+							'missions':
+								sub:
+									':planet':
+										show: (planet) ->
+											missions = lang.missions[planet]
+											return location.hash = '#/' + @path[0...2].join '/' unless missions?
+											
+											data = {missions: [], summary: {}}
+											
+											check = (m) ->
+												if m?
+													m = ({flag: v[0], year: v[1], mission: v[2]} for v in m)
+													data.missions = data.missions.concat m
+													m.length
+												else
+													0
+											s = check missions.success
+											p = check missions.partial
+											f = check missions.fail
+											strings = lang.missions.Strings
+											data.summary =
+												total: strings[0]+': '+(s+p+f)
+												success: strings[1]+': '+s
+												partial: strings[2]+': '+p
+												fail: strings[3]+': '+f
+											
+											$('#planets').append interpolate templates.missions, data
+										hide: ->
+											$('.missions').remove()
 							'habzone':
 								show: ->
 									do createFeatureOverlay
