@@ -2,7 +2,7 @@
 	<div class="bg" id="bg-end"><div></div></div>
 	<div class="bg" id="bg-sun"><div></div></div>
 	{{#planets}}
-	<div class="planet" id="{{id}}" onclick="window.location = '#/{{../lang}}/main/planet/{{id}}'">
+	<div class="planet" id="{{id}}" data-link="#/{{../lang}}/main/planet/{{id}}">
 		{{#moons}}
 		<div class="moon name" {{#caption}}style="left: {{x}}px; top: {{y}}px;"{{/caption}}>{{name}}</div>
 		{{/moons}}
