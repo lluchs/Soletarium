@@ -241,10 +241,9 @@ app = new Deproute
 							$('img', this).attr('src', "images/planets/#{planet}.png")
 						
 						# only clickable if there is data to show
-						if general.detail.planets[planet]?
-							$(e).click -> window.location = $(e).data 'link'
-						else
-							$(e).css('cursor', 'default')
+						$(e).click ->
+							window.location = $(e).data 'link' if $(e).data 'link'
+						$(e).data('no_link', true).data('link', '').css('cursor', 'default') unless general.detail.planets[planet]?
 					
 					# Footer
 					doResize adjustFooter
@@ -396,11 +395,27 @@ app = new Deproute
 							$('#features li').removeClass 'r2'
 						sub:
 							'missions':
+								show: ->
+									$('#planets .planet').each (i, e) =>
+										e = $(e)
+										e.data 'normal_link', e.data 'link'
+										planet = e.attr 'id'
+										if lang.missions[planet]?
+											e.data 'link', '#/' + @path[0...4].join('/') + '/' + planet
+											e.css 'cursor', 'pointer'
+										else
+											e.data 'link', ''
+											e.css 'cursor', 'default'
+								hide: ->
+									$('#planets .planet').each (i, e) ->
+										e = $(e)
+										e.data 'link', e.data 'normal_link'
+										e.css 'cursor', 'default' if e.data 'no_link'
 								sub:
 									':planet':
 										show: (planet) ->
 											missions = lang.missions[planet]
-											return location.hash = '#/' + @path[0...2].join '/' unless missions?
+											return location.hash = '#/' + @path[0...3].join '/' unless missions?
 											
 											data = {missions: [], summary: {}}
 											
