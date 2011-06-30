@@ -329,7 +329,7 @@ app = new Deproute
 									$('#feature-overlay').click -> location.hash = "#/#{currentLang}/main"
 									
 									# bereits ein Tab aufgerufen?
-									if not @path[5]
+									if not @path[4]
 										location.hash = "#{loc}/#{lang.detail[planet].meta[0].id}"
 								hide: ->
 									rmFeatureOverlay()
