@@ -251,10 +251,22 @@ $bg-hgt: 798px
 
 .missions
 	+abs
-	width: 400px
-	max-height: 500px
-	overflow-y: auto
+	top: 150px
+	$wdt: 400px
+	margin-left: -$wdt/2
+	width: $wdt
+	max-height: 400px
 	background-color: black
+	
+	ul
+		height: 350px
+		overflow: auto
+	.success
+		color: green
+	.partial
+		color: yellow
+	.fail
+		color: red
 
 // Planetendetail
 

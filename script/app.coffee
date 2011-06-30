@@ -154,6 +154,12 @@ positionSolWind = ->
 	e.css('left', "#{x - offset.x}px")
 	e.css('top', "#{y - offset.y}px")
 
+currentMissionsPlanet = null
+# positions the mission window in front of a planet
+positionMissions = ->
+	xpos = calcPlanetX general.planets[currentMissionsPlanet].xpos
+	$('.missions').css 'left', xpos
+
 # passt den Footer an
 adjustFooter = ->
 	footer = $('#main > footer')
@@ -395,16 +401,20 @@ app = new Deproute
 											
 											data = {missions: [], summary: {}}
 											
-											check = (m) ->
+											check = (m, status) ->
 												if m?
-													m = ({flag: v[0], year: v[1], mission: v[2]} for v in m)
+													m = ({flag: v[0], year: v[1], mission: v[2], status: status} for v in m)
 													data.missions = data.missions.concat m
 													m.length
 												else
 													0
-											s = check missions.success
-											p = check missions.partial
-											f = check missions.fail
+											s = check missions.success, 'success'
+											p = check missions.partial, 'partial'
+											f = check missions.fail, 'fail'
+											
+											# sorted by year
+											data.missions.sort (a, b) -> a.year - b.year
+											
 											strings = lang.missions.Strings
 											data.summary =
 												total: strings[0]+': '+(s+p+f)
@@ -413,7 +423,11 @@ app = new Deproute
 												fail: strings[3]+': '+f
 											
 											$('#planets').append interpolate templates.missions, data
+											
+											currentMissionsPlanet = getIndex planet, general.planets
+											doResize positionMissions
 										hide: ->
+											rmResize positionMissions
 											$('.missions').remove()
 							'habzone':
 								show: ->
