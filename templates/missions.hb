@@ -1,7 +1,7 @@
 <div class=missions>
 	<ul>
 	{{#missions}}
-		<li class="flag {{flag}} {{status}}">{{year}}: {{mission}}</li>
+		<li class="{{status}}"><span class="flag {{flag}}"></span><i>{{year}}</i>: {{mission}}</li>
 	{{/missions}}
 	</ul>
 	{{#summary}}
