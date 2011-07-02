@@ -5,6 +5,6 @@
 	{{/missions}}
 	</ul>
 	{{#summary}}
-	<p>{{total}} - <span class=success>{{success}}</span> - <span class=partial>{{partial}}</span> - <span class=fail>{{fail}}</p>
+	<p><span class=total>{{total}}</span> - <span class=success>{{success}}</span> - <span class=partial>{{partial}}</span> - <span class=fail>{{fail}}</p>
 	{{/summary}}
 </div>

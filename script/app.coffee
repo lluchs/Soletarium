@@ -442,6 +442,22 @@ app = new Deproute
 											
 											$('#planets').append interpolate templates.missions, data
 											
+											missions = $('#planets .missions')
+											span = $('p span', missions).click ->
+												e = $(this)
+												return if e.hasClass 'selected'
+												klass = e.attr 'class'
+												all = true if klass is 'total'
+												$('li', missions).each (i, li) ->
+													li = $(li)
+													if all or li.hasClass klass
+														li.show()
+													else
+														li.hide()
+												span.removeClass 'selected'
+												e.addClass 'selected'
+											span.first().addClass 'selected'
+											
 											currentMissionsPlanet = getIndex planet, general.planets
 											doResize positionMissions
 										hide: ->
