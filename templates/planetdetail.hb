@@ -12,6 +12,6 @@
 	</div>
 	<div class="rbar">
 		<h1>{{title}}</h1>
-		<a href="#/{{lang}}/main">X</a>
+		<a class=close href="#/{{lang}}/main">X</a>
 	</div>
 </section>

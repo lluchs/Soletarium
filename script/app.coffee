@@ -439,6 +439,7 @@ app = new Deproute
 												success: strings[1]+': '+s
 												partial: strings[2]+': '+p
 												fail: strings[3]+': '+f
+											data.lang = currentLang
 											
 											$('#planets').append interpolate templates.missions, data
 											
