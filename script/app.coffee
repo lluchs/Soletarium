@@ -431,6 +431,30 @@ app = new Deproute
 									e.css 'right', padding.right
 								hide: ->
 									do $('#temperature').remove
+							'suns':
+								show: ->
+									createFeatureOverlay()
+									$('#planets').append templates.suns
+									goto = (p) => location.hash = "#/#{@path[0..3].join '/'}/#{p}"
+									goto 1 unless @path[4]
+									suns = $('#suns')
+									# these elements are hidden on first/last page
+									$('.left', suns).click ->
+										goto (+suns.data 'page')-1
+									$('.right', suns).click ->
+										goto (+suns.data 'page')+1
+								hide: ->
+									$('#suns').remove()
+								sub:
+									':page':
+										show: (page) ->
+											suns = $('#suns').css 'background-image', "url(images/features/suns_#{page}.jpg)"
+											suns.data 'page', page
+											# first/last page
+											$('.left, .right').show()
+											switch page
+												when '1' then $('.left', suns).hide()
+												when general.features.suns.num then $('.right', suns).hide()
 			'versions':
 				show: ->
 					$('#container').css('display', 'table').html interpolate templates.versions, lang

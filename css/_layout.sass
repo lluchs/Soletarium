@@ -247,6 +247,34 @@ $bg-hgt: 798px
 			background-image: url(../images/features/Temp_Left.svg)
 			background-size: 100% 100%
 
+// Feature: Sonnen
+
+#suns
+	+abs
+	top: 150px
+	left: 0
+	right: 0
+	margin: auto
+	width: 625px
+	height: 450px
+	$bradius: 15px
+	border-radius: $bradius
+	.left, .right
+		+abs
+		top: 0
+		bottom: 0
+		width: 61px
+		cursor: pointer
+	.left
+		border-top-left-radius: $bradius
+		border-bottom-left-radius: $bradius
+		background-image: url(../images/features/suns_arrow_left.png)
+	.right
+		right: 0
+		border-top-right-radius: $bradius
+		border-bottom-right-radius: $bradius
+		background-image: url(../images/features/suns_arrow_right.png)
+
 // Planetendetail
 
 .planetdetail
