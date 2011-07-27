@@ -442,10 +442,8 @@ app = new Deproute
 									suns = @suns.e
 									# these elements are hidden on first/last page
 									$('.left', suns).click =>
-										@suns.dir = 'left'
 										goto (+@suns.page)-1
 									$('.right', suns).click =>
-										@suns.dir = 'right'
 										goto (+@suns.page)+1
 								hide: ->
 									$('#suns').remove()
@@ -461,15 +459,16 @@ app = new Deproute
 												# width of images
 												wdt = suns.width()
 												# opposite direction of sliding
-												dir = @suns.dir
+												dir = if prev < page then '-' else '+'
 												createImg = (src) ->
-													$("<img class=slider src='#{src}' alt>").appendTo(suns)
-												out = createImg(url prev).css(dir, 0)
-												sin = createImg(url page).css(dir, "-#{wdt}px").show().load ->
-													# variables can't be used in object literal keys
-													ani = {}
-													ani[dir] = "+=#{wdt}"
-													sin.add(out).animate ani, 1000, 'swing', -> $(this).remove()
+													$("<div class=slider></div>").css('background-image', "url(#{src})").appendTo(suns)
+												out = createImg(url prev)
+												$("<img src='#{url page}'>").load ->
+													sin = createImg(url page)
+													$({e: sin, pos: -(dir+wdt)}).add({e: out, pos: 0}).animate {pos: dir+'='+wdt},
+														duration: 1000
+														step: -> @e.css 'background-position', @pos+'px 0'
+														complete: -> @e.remove()
 											@suns.page = page
 											# first/last page
 											$('.left, .right').show()
