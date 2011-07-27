@@ -463,12 +463,13 @@ app = new Deproute
 												createImg = (src) ->
 													$("<div class=slider></div>").css('background-image', "url(#{src})").appendTo(suns)
 												out = createImg(url prev)
-												$("<img src='#{url page}'>").load ->
+												$("<img src='#{url page}'>").hide().appendTo('body').load ->
 													sin = createImg(url page)
 													$({e: sin, pos: -(dir+wdt)}).add({e: out, pos: 0}).animate {pos: dir+'='+wdt},
 														duration: 1000
 														step: -> @e.css 'background-position', @pos+'px 0'
 														complete: -> @e.remove()
+													$(this).remove()
 											@suns.page = page
 											# first/last page
 											$('.left, .right').show()
