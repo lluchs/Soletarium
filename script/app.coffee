@@ -466,7 +466,7 @@ app = new Deproute
 												$("<img src='#{url page}'>").hide().appendTo('body').load ->
 													sin = createImg(url page)
 													$({e: sin, pos: -(dir+wdt)}).add({e: out, pos: 0}).animate {pos: dir+'='+wdt},
-														duration: 1000
+														duration: 800
 														step: -> @e.css 'background-position', @pos+'px 0'
 														complete: -> @e.remove()
 													$(this).remove()
