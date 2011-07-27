@@ -199,8 +199,10 @@ extendDetailTab = (tdata, planet) ->
 	$.extend true, tdata, general.detail.all[tdata.id], general.detail.planets[planet][tdata.id]
 	
 # erstellt ein Overlay zum Abdecken der Planeten
-createFeatureOverlay = ->
+createFeatureOverlay = (close) ->
 	$('#planets').append '<div id="feature-overlay"></div>'
+	if close
+		$('#feature-overlay').click -> location.hash = "#/#{currentLang}/main"
 rmFeatureOverlay = ->
 	do $('#feature-overlay').remove
 	
@@ -325,8 +327,7 @@ app = new Deproute
 									planetdetail().css('display', 'none').fadeIn('slow')
 									
 									# Overlay
-									createFeatureOverlay()
-									$('#feature-overlay').click -> location.hash = "#/#{currentLang}/main"
+									createFeatureOverlay(true)
 									
 									# bereits ein Tab aufgerufen?
 									if not @path[4]
@@ -433,7 +434,7 @@ app = new Deproute
 									do $('#temperature').remove
 							'suns':
 								show: ->
-									createFeatureOverlay()
+									createFeatureOverlay(true)
 									$('#planets').append templates.suns
 									@suns = e: $('#suns')
 									goto = (p) => location.hash = "#/#{@path[0..3].join '/'}/#{p}"
@@ -448,6 +449,7 @@ app = new Deproute
 										goto (+@suns.page)+1
 								hide: ->
 									$('#suns').remove()
+									rmFeatureOverlay()
 								sub:
 									':page':
 										show: (page) ->
