@@ -435,39 +435,43 @@ app = new Deproute
 								show: ->
 									createFeatureOverlay()
 									$('#planets').append templates.suns
+									@suns = e: $('#suns')
 									goto = (p) => location.hash = "#/#{@path[0..3].join '/'}/#{p}"
 									goto 1 unless @path[4]
-									suns = $('#suns')
+									suns = @suns.e
 									# these elements are hidden on first/last page
-									$('.left', suns).click ->
-										suns.data 'dir', 'right'
-										goto (+suns.data 'page')-1
-									$('.right', suns).click ->
-										suns.data 'dir', 'left'
-										goto (+suns.data 'page')+1
+									$('.left', suns).click =>
+										@suns.dir = 'left'
+										goto (+@suns.page)-1
+									$('.right', suns).click =>
+										@suns.dir = 'right'
+										goto (+@suns.page)+1
 								hide: ->
 									$('#suns').remove()
 								sub:
 									':page':
 										show: (page) ->
 											url = (p) -> "images/features/suns_#{p}.jpg"
-											suns = $('#suns').css 'background-image', "url(#{url page})"
-											prev = suns.data 'page'
+											suns = @suns.e.css 'background-image', "url(#{url page})"
+											prev = @suns.page
 											# sliding animation
 											if prev
 												# width of images
 												wdt = suns.width()
 												# opposite direction of sliding
-												dir = suns.data('dir')
-												out = $('.out', suns).attr('src', url prev).css(dir, 0).show()
-												$('.in', suns).attr('src', url page).css(dir, "-#{wdt}px").show().load ->
+												dir = @suns.dir
+												createImg = (src) ->
+													$("<img class=slider src='#{src}' alt>").appendTo(suns)
+												out = createImg(url prev).css(dir, 0)
+												sin = createImg(url page).css(dir, "-#{wdt}px").show().load ->
 													# variables can't be used in object literal keys
 													ani = {}
-													ani[dir] = "+=#{wdt}px"
-													img = $(this).add(out).animate ani, 1000, 'swing', ->
-														# reset
-														img.hide().css('left', 'auto').css('right', 'auto')
-											suns.data 'page', page
+													ani[dir] = '0'
+													rm = -> $(this).remove()
+													sin.animate ani, 1000, 'swing', rm
+													ani[dir] = "#{wdt}px"
+													out.animate ani, 1000, 'swing', rm
+											@suns.page = page
 											# first/last page
 											$('.left, .right').show()
 											switch page
