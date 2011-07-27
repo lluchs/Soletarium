@@ -466,11 +466,8 @@ app = new Deproute
 												sin = createImg(url page).css(dir, "-#{wdt}px").show().load ->
 													# variables can't be used in object literal keys
 													ani = {}
-													ani[dir] = '0'
-													rm = -> $(this).remove()
-													sin.animate ani, 1000, 'swing', rm
-													ani[dir] = "#{wdt}px"
-													out.animate ani, 1000, 'swing', rm
+													ani[dir] = "+=#{wdt}"
+													sin.add(out).animate ani, 1000, 'swing', -> $(this).remove()
 											@suns.page = page
 											# first/last page
 											$('.left, .right').show()
