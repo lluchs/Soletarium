@@ -259,6 +259,7 @@ $bg-hgt: 798px
 	height: 450px
 	$bradius: 15px
 	border-radius: $bradius
+	overflow: hidden
 	.left, .right
 		+abs
 		top: 0
@@ -274,6 +275,9 @@ $bg-hgt: 798px
 		border-top-right-radius: $bradius
 		border-bottom-right-radius: $bradius
 		background-image: url(../images/features/suns_arrow_right.png)
+	.in, .out
+		+abs
+		display: none
 
 // Planetendetail
 
