@@ -437,7 +437,7 @@ app = new Deproute
 									createFeatureOverlay(true)
 									$('#planets').append templates.suns
 									@suns = e: $('#suns')
-									goto = (p) => location.hash = "#/#{@path[0..3].join '/'}/#{p}"
+									goto = (p) => location.hash = "#/#{@path[0..3].join '/'}/#{p}" unless $('.slider', suns).length
 									goto 1 unless @path[4]
 									suns = @suns.e
 									# these elements are hidden on first/last page
@@ -461,7 +461,7 @@ app = new Deproute
 												# opposite direction of sliding
 												dir = if prev < page then '-' else '+'
 												createImg = (src) ->
-													$("<div class=slider></div>").css('background-image', "url(#{src})").appendTo(suns)
+													$("<div class=slider></div>").css('background-image', "url(#{src})").prependTo(suns)
 												out = createImg(url prev)
 												$("<img src='#{url page}'>").hide().appendTo('body').load ->
 													sin = createImg(url page)
