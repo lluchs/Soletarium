@@ -464,7 +464,8 @@ app = new Deproute
 													$("<div class=slider></div>").css('background-image', "url(#{src})").prependTo(suns)
 												out = createImg(url prev)
 												$("<img src='#{url page}'>").hide().appendTo('body').load ->
-													sin = createImg(url page)
+													# move image out of bounds to prevent short blinking before the animation starts
+													sin = createImg(url page).css 'background-position', wdt+'px 0'
 													$({e: sin, pos: -(dir+wdt)}).add({e: out, pos: 0}).animate {pos: dir+'='+wdt},
 														duration: 800
 														step: -> @e.css 'background-position', @pos+'px 0'
