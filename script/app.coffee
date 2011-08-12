@@ -154,6 +154,12 @@ positionSolWind = ->
 	e.css('left', "#{x - offset.x}px")
 	e.css('top', "#{y - offset.y}px")
 
+currentMissionsPlanet = null
+# positions the mission window in front of a planet
+positionMissions = ->
+	xpos = calcPlanetX general.planets[currentMissionsPlanet].xpos
+	$('.missions').css 'left', xpos
+
 # passt den Footer an
 adjustFooter = ->
 	footer = $('#main > footer')
@@ -237,7 +243,9 @@ app = new Deproute
 							$('img', this).attr('src', "images/planets/#{planet}.png")
 						
 						# only clickable if there is data to show
-						$(e).attr('onclick', '').css('cursor', 'default') unless general.detail.planets[planet]?
+						$(e).click ->
+							window.location = $(e).data 'link' if $(e).data 'link'
+						$(e).data('no_link', true).data('link', '').css('cursor', 'default') unless general.detail.planets[planet]?
 					
 					# Footer
 					doResize adjustFooter
@@ -387,6 +395,78 @@ app = new Deproute
 						hide: ->
 							$('#features li').removeClass 'r2'
 						sub:
+							'missions':
+								show: ->
+									$('#planets').append interpolate templates.missionshint, lang.missions.Hint
+									$('#planets .planet').each (i, e) =>
+										e = $(e)
+										e.data 'normal_link', e.data 'link'
+										planet = e.attr 'id'
+										if lang.missions[planet]?
+											e.data 'link', '#/' + @path[0...4].join('/') + '/' + planet
+											e.css 'cursor', 'pointer'
+										else
+											e.data 'link', ''
+											e.css 'cursor', 'default'
+								hide: ->
+									$('#missionshint').remove()
+									$('#planets .planet').each (i, e) ->
+										e = $(e)
+										e.data 'link', e.data 'normal_link'
+										e.css 'cursor', 'default' if e.data 'no_link'
+								sub:
+									':planet':
+										show: (planet) ->
+											missions = lang.missions[planet]
+											return location.hash = '#/' + @path[0...3].join '/' unless missions?
+											
+											data = {missions: [], summary: {}}
+											
+											check = (m, status) ->
+												if m?
+													m = ({flag: v[0], year: v[1], mission: v[2], status: status} for v in m)
+													data.missions = data.missions.concat m
+													m.length
+												else
+													0
+											s = check missions.success, 'success'
+											p = check missions.partial, 'partial'
+											f = check missions.fail, 'fail'
+											
+											# sorted by year
+											data.missions.sort (a, b) -> a.year - b.year
+											
+											strings = lang.missions.Strings
+											data.summary =
+												total: strings[0]+': '+(s+p+f)
+												success: strings[1]+': '+s
+												partial: strings[2]+': '+p
+												fail: strings[3]+': '+f
+											data.lang = currentLang
+											
+											$('#planets').append interpolate templates.missions, data
+											
+											missions = $('#planets .missions')
+											span = $('p span', missions).click ->
+												e = $(this)
+												return if e.hasClass 'selected'
+												klass = e.attr 'class'
+												all = true if klass is 'total'
+												$('li', missions).each (i, li) ->
+													li = $(li)
+													if all or li.hasClass klass
+														li.show()
+													else
+														li.hide()
+												span.removeClass 'selected'
+												e.addClass 'selected'
+											span.first().addClass 'selected'
+											
+											currentMissionsPlanet = getIndex planet, general.planets
+											doResize positionMissions
+										hide: ->
+											rmResize positionMissions
+											$('.missions').remove()
 							'habzone':
 								show: ->
 									do createFeatureOverlay
