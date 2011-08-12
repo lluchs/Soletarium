@@ -396,6 +396,7 @@ app = new Deproute
 						sub:
 							'missions':
 								show: ->
+									$('#planets').append interpolate templates.missionshint, lang.missions.Hint
 									$('#planets .planet').each (i, e) =>
 										e = $(e)
 										e.data 'normal_link', e.data 'link'
@@ -407,6 +408,7 @@ app = new Deproute
 											e.data 'link', ''
 											e.css 'cursor', 'default'
 								hide: ->
+									$('#missionshint').remove()
 									$('#planets .planet').each (i, e) ->
 										e = $(e)
 										e.data 'link', e.data 'normal_link'
