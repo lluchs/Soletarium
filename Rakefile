@@ -1,8 +1,8 @@
 require 'rubygems'
-require 'json'
-require 'yaml'
-require 'erb'
 require 'rake/clean'
+autoload :JSON, 'json'
+autoload :YAML, 'yaml'
+autoload :ERB, 'erb'
 require 'net/sftp'
 
 BUILD_DIR = 'build'
