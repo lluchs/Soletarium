@@ -3,6 +3,8 @@ require 'rake/clean'
 autoload :JSON, 'json'
 autoload :YAML, 'yaml'
 autoload :ERB, 'erb'
+gem 'uglifier'
+autoload :Uglifier, 'uglifier'
 require 'net/sftp'
 
 BUILD_DIR = 'build'
@@ -94,11 +96,15 @@ def getContents(filename)
 	end
 end
 
+def writeFile(filename, content)
+	File.open(filename, 'w') do |f|
+		f.puts content
+	end
+end
+
 # writes the data-object as JSON to filename
 def writeJSON(filename, data)
-	File.open(filename, 'w') do |f|
-		f.puts JSON.fast_generate(data)
-	end
+	writeFile filename, JSON.fast_generate(data)
 	puts filename
 end
 
@@ -126,6 +132,35 @@ task :upload => :default do
 		end
 	end
 end
+
+desc 'Minifies JS'
+task :minify do
+	path = build 'index.html'
+	html = File.read path
+	scripts = ''
+	html.sub! /<!-- begin scripts -->(.+)<!-- end scripts -->/m do #/
+		scripts = $1
+		'<script src="lib/min.js"></script>'
+	end
+	writeFile path, html
+	
+	js = ''
+	scripts.scan /src="(.+?)"/ do
+		file = build $1
+		js += File.read file
+		rm file
+	end
+	out = build 'lib/min.js'
+	writeFile out, Uglifier.compile(js)
+	puts out
+end
+
+task :unminify do
+	rm_f build 'index.html'
+	rm_f build 'lib/min.js'
+	Rake::Task['after_unminify'].invoke
+end
+task :after_unminify => [:lib, :coffee, :files]
 
 desc 'Creates feed'
 task :feed
