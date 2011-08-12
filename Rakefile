@@ -5,7 +5,8 @@ autoload :YAML, 'yaml'
 autoload :ERB, 'erb'
 gem 'uglifier'
 autoload :Uglifier, 'uglifier'
-require 'net/sftp'
+gem 'net-sftp'
+autoload :Net, 'net/sftp'
 
 BUILD_DIR = 'build'
 CLEAN.include BUILD_DIR
