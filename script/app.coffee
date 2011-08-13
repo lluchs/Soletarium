@@ -403,6 +403,7 @@ app = new Deproute
 							$('#features li').removeClass 'r2'
 							$('#featurefooter').remove()
 							$('#main > footer > section').show()
+						goback: true
 						sub:
 							'missions':
 								show: ->
