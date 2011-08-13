@@ -385,15 +385,24 @@ app = new Deproute
 													$(e).css 'cursor', 'default'
 					'feature':
 						show: ->
-							li = $('#features li')
-							if not li.hasClass 'r2'
-								feature = @path[3]
-								if feature
+							feature = @path[3]
+							if feature
+								# feature buttons
+								li = $('#features li')
+								if not li.hasClass 'r2'
 									li.each (i, e) ->
 										e = $(e)
 										e.trigger 'highlight' if e.data('feature') is feature
+								# footer text
+								text = lang.footer.feature[feature]
+								if text
+									footer = $('#main > footer')
+									footer.children().hide()
+									footer.append "<section id=featurefooter>#{text}</section>"
 						hide: ->
 							$('#features li').removeClass 'r2'
+							$('#featurefooter').remove()
+							$('#main > footer > section').show()
 						sub:
 							'missions':
 								show: ->

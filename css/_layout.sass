@@ -557,19 +557,23 @@ $bg-hgt: 798px
 	text-align: center
 	background-color: black
 	> section
-		width: 30%
-		max-width: 550px
+		text-align: left
 		padding: 1em
 		padding-top: 0
+	> section:not(#featurefooter)
+		width: 30%
+		max-width: 550px
 		display: inline-block
 		vertical-align: top
-		text-align: left
 		&:nth-child(2)
 			width: 32%
 			border-left: solid 1px grey
 			border-right: solid 1px grey
 		img
 			vertical-align: middle
+	> #featurefooter
+		.columns
+			+column-count(2)
 
 .site
 	background-image: url(../images/layout/EarthHG_1920x1080.jpg)
