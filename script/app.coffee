@@ -399,10 +399,14 @@ app = new Deproute
 									footer = $('#main > footer')
 									footer.children().hide()
 									footer.append "<section id=featurefooter>#{text}</section>"
+									adjustFooter()
 						hide: ->
 							$('#features li').removeClass 'r2'
-							$('#featurefooter').remove()
-							$('#main > footer > section').show()
+							footer =  $('#featurefooter')
+							if footer.length
+								footer.remove()
+								$('#main > footer > section').show()
+								adjustFooter()
 						goback: true
 						sub:
 							'missions':
