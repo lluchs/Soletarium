@@ -37,7 +37,10 @@ class Deproute
 		if @current.toString() is path.toString()
 			diff = path.length - 2
 		else
+			# diff: position to which both paths are the same
 			++diff while @current[diff] is path[diff]
+			# goback: route to recall when its children are changed
+			--diff while @getRoute(@current[0...diff])?.goback
 		# adjust differences
 		# remove obsolete parts
 		if diff isnt 0 and diff isnt @current.length
