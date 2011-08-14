@@ -94,7 +94,7 @@ html, body, #container, #main, #versions, #meta
 	min-width: 1200px
 	min-height: 900px
 
-#content, #planets
+#content, #planets, #eclipse
 	height: 100%
 	position: relative
 
@@ -368,6 +368,50 @@ $bg-hgt: 798px
 		color: #d0ba2a
 	.fail
 		color: #e13535
+
+// Feature: Eclipse
+
+#eclipse
+	+linear-gradient('left, #644323 0%, black 100%')
+	> section
+		+abs
+		top: 150px
+		&.left, &.right
+			width: 300px
+		&.left
+			left: 4%
+			nav
+				position: relative
+				background-color: black
+				border-radius: 5px
+				width: 20em
+				$hgt: 3em
+				height: $hgt
+				line-height: $hgt
+				text-align: center
+				> a
+					width: 50%
+					+abs
+					top: 0
+					bottom: 0
+					cursor: pointer
+					&.moonorbit
+						border-right: 1px solid grey
+					&.eclipse
+						right: 0
+		&.center
+			left: 50%
+			$wdt: 460px
+			width: $wdt
+			margin-left: -$wdt/2
+			//.moonorbit
+			.eclipse
+				display: none
+				position: relative
+				.moonl, .moonr
+					+abs
+		&.right
+			right: 4%
 
 // Planetendetail
 

@@ -571,6 +571,24 @@ app = new Deproute
 											switch page
 												when '1' then $('.left', suns).hide()
 												when general.features.suns.num then $('.right', suns).hide()
+							'eclipse':
+								show: ->
+									$('#planets').hide()
+									$('#content').prepend interpolate templates.eclipse, lang.feature.eclipse
+									path = '#/' + @path[0...4].join('/') + '/'
+									a = $('#eclipse .left nav a').each ->
+										e = $(this)
+										mo = 'moonorbit'
+										ec = 'eclipse'
+										e.attr 'href',  path + if e.hasClass mo then mo else ec
+									window.location = a.first().attr 'href' unless @path[5]
+								hide: ->
+									$('#planets').show()
+									$('#eclipse').remove()
+								sub:
+									':center':
+										show: (which) ->
+											$('#eclipse .center > *').hide().filter('.'+which).show()
 			'versions':
 				show: ->
 					$('#container').css('display', 'table').html interpolate templates.versions, lang
