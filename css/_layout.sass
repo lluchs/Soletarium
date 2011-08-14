@@ -26,6 +26,11 @@
 	-moz-column-count: $arg
 	-webkit-column-count: $arg
 
+=column-width($arg)
+	column-width: $arg
+	-moz-column-width: $arg
+	-webkit-column-width: $arg
+
 =column-gap($arg)
 	column-gap: $arg
 	-moz-column-gap: $arg
@@ -572,8 +577,12 @@ $bg-hgt: 798px
 		img
 			vertical-align: middle
 	> #featurefooter
+		$p: 2em
+		padding-left: $p
+		padding-right: $p
 		.columns
 			+column-count(2)
+			max-width: 1300px
 
 .site
 	background-image: url(../images/layout/EarthHG_1920x1080.jpg)
