@@ -1,7 +1,7 @@
 <div id=versions>
 	{{> header}}
 	{{#versions}}
-	<div>
+	<section>
 		<h1>{{title}}</h1>
 		<table>
 			{{#version}}
@@ -17,6 +17,6 @@
 				</tr>
 			{{/version}}
 		</table>
-	</div>
+	</section>
 	{{/versions}}
 </div>

@@ -585,10 +585,11 @@ $bg-hgt: 798px
 			+column-count(2)
 			max-width: 1300px
 
+$site-bg: url(../images/layout/EarthHG_1920x1080.jpg)
 .site
-	background-image: url(../images/layout/EarthHG_1920x1080.jpg)
+	background-image: $site-bg 
 	text-shadow: rgba(black, 0.5) 0 0 1px
-	> div
+	> section
 		margin-right: auto
 		margin-left: auto
 		padding: 10px 20px
@@ -600,7 +601,7 @@ $bg-hgt: 798px
 	@extend .site
 	display: table-cell
 	vertical-align: middle
-	> div
+	> section
 		width: 550px
 		table
 			// more vertical space between two versions
@@ -617,20 +618,29 @@ $bg-hgt: 798px
 // Metadata
 #meta
 	@extend .site
-	> div
-		+abs
-		left: 0
+	background: none
+	> .bg
+		position: fixed
+		top: 0
 		right: 0
-		top: 125px
+		bottom: 0
+		left: 0
+		z-index: -1
+		background-image: $site-bg
+	> section
+		margin: auto
+		margin-top: 125px
 		width: 1100px
-		height: 750px
-		overflow: auto
 		> *
+			float: left
 			width: 49%
 			&.discl
 				margin-top: 100px
 			&.thanks
-				+abs
-				top: 0
-				right: 0
+				float: right
+			&.clear
+				float: none
+				clear: both
+	> .margin
+		height: 20px
 

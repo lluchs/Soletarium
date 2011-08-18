@@ -1,10 +1,15 @@
 <div id=meta>
+	<div class=bg></div>
 	{{> header}}
 	{{#meta}}
-	<div>
-		<div class=op>{{{Operators}}}</div>
-		<div class=discl>{{{Disclaimer}}}</div>
+	<section>
+		<div>
+			<div class=op>{{{Operators}}}</div>
+			<div class=discl>{{{Disclaimer}}}</div>
+		</div>
 		<div class=thanks>{{{Thanksto}}}</div>
-	</div>
+		<div class=clear></div>
+	</section>
+	<div class=margin></class>
 	{{/meta}}
 </div>
