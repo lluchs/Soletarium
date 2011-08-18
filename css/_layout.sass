@@ -625,10 +625,12 @@ $bg-hgt: 798px
 		width: 1100px
 		height: 750px
 		overflow: auto
-		+column-count(2)
-		+column-gap(20px)
-		.discl
-			margin-top: 100px
-		.thanks
-			break-before: column
-			+column-break-before(always)
+		> *
+			width: 49%
+			&.discl
+				margin-top: 100px
+			&.thanks
+				+abs
+				top: 0
+				right: 0
+
