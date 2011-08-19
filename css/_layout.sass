@@ -41,6 +41,11 @@
 	-moz-column-break-before: $arg
 	-webkit-column-break-before: $arg
 
+=column-break-after($arg)
+	column-break-after: $arg
+	-moz-column-break-after: $arg
+	-webkit-column-break-after: $arg
+
 =box
 	display: box
 	display: -moz-box
@@ -584,6 +589,8 @@ $bg-hgt: 798px
 		.columns
 			+column-count(2)
 			max-width: 1300px
+			br
+				+column-break-after(always)
 
 $site-bg: url(../images/layout/EarthHG_1920x1080.jpg)
 .site
