@@ -581,7 +581,7 @@ app = new Deproute
 										mo = 'moonorbit'
 										ec = 'eclipse'
 										e.attr 'href',  path + if e.hasClass mo then mo else ec
-									window.location = a.first().attr 'href' unless @path[5]
+									window.location = a.first().attr 'href' unless @path[4]
 
 									# moon drag
 									rad = (deg) -> deg*2*Math.PI/360
