@@ -582,6 +582,42 @@ app = new Deproute
 										ec = 'eclipse'
 										e.attr 'href',  path + if e.hasClass mo then mo else ec
 									window.location = a.first().attr 'href' unless @path[5]
+
+									# moon drag
+									rad = (deg) -> deg*2*Math.PI/360
+									positionMoon = (angle, deg = false) ->
+										ecl = general.features.eclipse
+										center = ecl.offset
+										radius = ecl.radius
+										moon = ecl[@data 'name']
+										angle = rad angle if deg
+										angle = rad(moon.angle)+angle
+										angle = 2*Math.PI + angle if angle < 0
+										x = center.x + Math.cos(angle)*radius - moon.offset.x
+										y = center.y - Math.sin(angle)*radius - moon.offset.y
+										@css 'left', x+'px'
+										@css 'top', y+'px'
+									eclipse = $('#eclipse .center .eclipse')
+									eclipse.children('.moon').each ->
+										positionMoon.call $(this), 0, true
+									.mousedown ->
+										e = $(this)
+										$('body').mousedown ->
+											false
+										.mousemove (event) ->
+											mx = event.pageX
+											my = event.pageY
+											o = eclipse.offset()
+											ecl = general.features.eclipse
+											center = ecl.offset
+											cx = o.left + center.x
+											cy = o.top + center.y
+											angle = Math.atan (cy-my)/(mx-cx)
+											bound = rad ecl.angle
+											angle = Math.max -bound, Math.min bound, angle
+											positionMoon.call e, angle
+										.mouseup ->
+											$(this).unbind('mousedown').unbind('mousemove').unbind('mouseup')
 								hide: ->
 									$('#planets').show()
 									$('#eclipse').remove()

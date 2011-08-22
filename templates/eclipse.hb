@@ -13,8 +13,8 @@
 		</div>
 		<div class=eclipse>
 			<img src="images/features/Moon_Eclipse.png" alt="{{eclipse}}">
-			<img class=moonl src="images/features/Moon_Shadow.png" alt="{{moon}}">
-			<img class=moonr src="images/features/Moon_Full.png" alt="{{moon}}">
+			<img class=moon data-name=moonl src="images/features/Moon_Shadow.png" alt="{{moon}}">
+			<img class=moon data-name=moonr src="images/features/Moon_Full.png" alt="{{moon}}">
 		</div>
 		{{/strings}}
 	</section>
