@@ -1,5 +1,9 @@
 <div class=text>
-	{{{text}}}
+	<div class="nano">
+		<div class="content">
+			{{{text}}}
+		</div>
+	</div>
 </div>
 <div class=image>
 	<img>

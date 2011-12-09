@@ -358,6 +358,9 @@ app = new Deproute
 											tabs = lang.detail[@currentPlanet].meta
 											t = extendDetailTab tabs[getIndex tab, tabs], @currentPlanet
 											@tabMedia = new TabMedia t.media, @currentPlanet
+
+											# nanoScroller
+											$('.nano', planetdetail()).nanoScroller()
 									'media':
 										show: ->
 											highlightTab @tabs['media']
@@ -475,6 +478,9 @@ app = new Deproute
 												span.removeClass 'selected'
 												e.addClass 'selected'
 											span.first().addClass 'selected'
+
+											# nanoScroller
+											$('.nano', missions).nanoScroller()
 											
 											currentMissionsPlanet = getIndex planet, general.planets
 											doResize positionMissions
