@@ -88,6 +88,9 @@
 			&.c#{$c}#{$class}
 				background-position: -$width*($c - 1) 0 - $height*($r - 1)
 
+=flagsheet($row, $col, $wdt, $hgt)
+	background-position: -$col*$wdt 0-$row*$hgt
+
 // === Layout ===
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
@@ -341,26 +344,24 @@ $bg-hgt: 798px
 				width: $wdt
 				height: $hgt
 				background-image: url(../images/layout/Missionflags.png)
-				=flagsheet($row, $col)
-					background-position: -$col*$wdt 0-$row*$hgt
 				&.eu
-					+flagsheet(0, 0)
+					+flagsheet(0, 0, $wdt, $hgt)
 				&.su
-					+flagsheet(0, 1)
+					+flagsheet(0, 1, $wdt, $hgt)
 				&.in
-					+flagsheet(0, 2)
+					+flagsheet(0, 2, $wdt, $hgt)
 				&.uk
-					+flagsheet(0, 3)
+					+flagsheet(0, 3, $wdt, $hgt)
 				&.ug
-					+flagsheet(0, 4)
+					+flagsheet(0, 4, $wdt, $hgt)
 				&.us
-					+flagsheet(1, 0)
+					+flagsheet(1, 0, $wdt, $hgt)
 				&.jp
-					+flagsheet(1, 1)
+					+flagsheet(1, 1, $wdt, $hgt)
 				&.cn
-					+flagsheet(1, 2)
+					+flagsheet(1, 2, $wdt, $hgt)
 				&.de
-					+flagsheet(1, 3)
+					+flagsheet(1, 3, $wdt, $hgt)
 	p
 		font-size: 75%
 		span
