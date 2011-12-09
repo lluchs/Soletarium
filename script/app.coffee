@@ -477,10 +477,18 @@ app = new Deproute
 														li.hide()
 												span.removeClass 'selected'
 												e.addClass 'selected'
+												scroller()
 											span.first().addClass 'selected'
 
 											# nanoScroller
-											$('.nano', missions).nanoScroller()
+											first = true
+											scroller = ->
+												nano = $('.nano', missions)
+												stop = nano.height() > nano.children().prop('scrollHeight')
+												unless first and stop
+													nano.nanoScroller stop: stop
+													first = false
+											scroller()
 											
 											currentMissionsPlanet = getIndex planet, general.planets
 											doResize positionMissions
