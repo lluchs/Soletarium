@@ -1,95 +1,95 @@
 // Mixins
-=transform($arg)
-	transform: $arg
-	-o-transform: $arg
-	-moz-transform: $arg
-	-ms-transform: $arg
-	-webkit-transform: $arg
+transform()
+	transform: arguments
+	-o-transform: arguments
+	-moz-transform: arguments
+	-ms-transform: arguments
+	-webkit-transform: arguments
 
-=transform-origin($arg)
-	transform-origin: $arg
-	-o-transform-origin: $arg
-	-moz-transform-origin: $arg
-	-ms-transform-origin: $arg
-	-webkit-transform-origin: $arg
+transform-origin()
+	transform-origin: arguments
+	-o-transform-origin: arguments
+	-moz-transform-origin: arguments
+	-ms-transform-origin: arguments
+	-webkit-transform-origin: arguments
 
-=linear-gradient($arg)
-	$arg: unquote($arg)
-	background-image: linear-gradient($arg)
-	background-image: -o-linear-gradient($arg)
-	background-image: -moz-linear-gradient($arg)
-	background-image: -ms-linear-gradient($arg)
-	background-image: -webkit-linear-gradient($arg)
+lin-grad()
+	//arguments: unquote(arguments)
+	background-image: linear-gradient(arguments)
+	background-image: -o-linear-gradient(arguments)
+	background-image: -moz-linear-gradient(arguments)
+	background-image: -ms-linear-gradient(arguments)
+	background-image: -webkit-linear-gradient(arguments)
 
-=column-count($arg)
-	column-count: $arg
-	-moz-column-count: $arg
-	-webkit-column-count: $arg
+column-count()
+	column-count: arguments
+	-moz-column-count: arguments
+	-webkit-column-count: arguments
 
-=column-width($arg)
-	column-width: $arg
-	-moz-column-width: $arg
-	-webkit-column-width: $arg
+column-width()
+	column-width: arguments
+	-moz-column-width: arguments
+	-webkit-column-width: arguments
 
-=column-gap($arg)
-	column-gap: $arg
-	-moz-column-gap: $arg
-	-webkit-column-gap: $arg
+column-gap()
+	column-gap: arguments
+	-moz-column-gap: arguments
+	-webkit-column-gap: arguments
 
-=column-break-before($arg)
-	column-break-before: $arg
-	-moz-column-break-before: $arg
-	-webkit-column-break-before: $arg
+column-break-before()
+	column-break-before: arguments
+	-moz-column-break-before: arguments
+	-webkit-column-break-before: arguments
 
-=column-break-after($arg)
-	column-break-after: $arg
-	-moz-column-break-after: $arg
-	-webkit-column-break-after: $arg
+column-break-after()
+	column-break-after: arguments
+	-moz-column-break-after: arguments
+	-webkit-column-break-after: arguments
 
-=box
+box()
 	display: box
 	display: -moz-box
 	display: -webkit-box
 
-=box-orient($arg)
-	box-orient: $arg
-	-moz-box-orient: $arg
-	-webkit-box-orient: $arg
+box-orient()
+	box-orient: arguments
+	-moz-box-orient: arguments
+	-webkit-box-orient: arguments
 
-=box-align($arg)
-	box-align: $arg
-	-moz-box-align: $arg
-	-webkit-box-align: $arg
+box-align()
+	box-align: arguments
+	-moz-box-align: arguments
+	-webkit-box-align: arguments
 
-=box-flex($arg)
-	box-flex: $arg
-	-moz-box-flex: $arg
-	-webkit-box-flex: $arg
+box-flex()
+	box-flex: arguments
+	-moz-box-flex: arguments
+	-webkit-box-flex: arguments
 
-=abs
+abs()
 	position: absolute
 
-=abs-fill
-	+abs
+abs-fill()
+	abs()
 	top: 0
 	right: 0
 	bottom: 0
 	left: 0
 
-=spritesheet($sheet, $width, $height, $cols, $rows)
-	background-image: $sheet
-	width: $width
-	height: $height
-	@for $c from 1 through $cols
-		@for $r from 1 through $rows
-			$class: '.r#{$r}'
-			@if $r == 1
-				$class: ''
-			&.c#{$c}#{$class}
-				background-position: -$width*($c - 1) 0 - $height*($r - 1)
+spritesheet(sheet, width, height, cols, rows)
+	background-image: sheet
+	width: width
+	height: height
+	for c in 1..cols
+		for r in 1..rows
+			class = r == 1 ? '' : '.r%s' % r
+			&.c{'' + c + class}
+				posx = -(width)*(c - 1)
+				posy = 0 - height*(r - 1)
+				background-position: posx posy
 
-=flagsheet($row, $col, $wdt, $hgt)
-	background-position: -$col*$wdt 0-$row*$hgt
+flagsheet(row, col, wdt, hgt)
+	background-position: -(col*wdt) 0-(row*hgt)
 
 // === Layout ===
 
@@ -117,7 +117,7 @@ img
 	position: relative
 
 header.logo
-	+abs
+	abs()
 	z-index: 100
 	top: 32px
 	width: 100%
@@ -125,7 +125,7 @@ header.logo
 
 nav#dimension
 	width: 3em
-	+abs
+	abs()
 	right: 1em
 	top: 1em
 	background-color: black
@@ -136,42 +136,42 @@ nav#dimension
 	background-image: url(../images/layout/bg.jpg)
 	background-color: black
 
-$bg-hgt: 798px
+bg-hgt = 798px
 #bg-end
-	+abs
+	abs()
 	right: 0
-	$grad: 140px
+	grad = 140px
 	width: 658px
-	height: $bg-hgt
+	height: bg-hgt
 	background-image: url(../images/layout/bg-end.jpg)
 	div
-		+abs
-		left: -$grad
-		width: $grad
-		height: $bg-hgt
+		abs()
+		left: -(grad)
+		width: grad
+		height: bg-hgt
 		background-image: url(../images/layout/bg-end-gradient.png)
 
 #bg-sun
-	+abs
-	$grad: 155px
+	abs()
+	grad = 155px
 	width: 500px
-	height: $bg-hgt
+	height: bg-hgt
 	background-image: url(../images/layout/bg-sun.jpg)
 	div
-		+abs
-		right: -$grad
-		width: $grad
-		height: $bg-hgt
+		abs()
+		right: -(grad)
+		width: grad
+		height: bg-hgt
 		background-image: url(../images/layout/bg-sun-gradient.png)
 
 .planet
-	+abs
+	abs()
 	z-index: 0
 	&:hover
 		cursor: pointer
 	.name
-		+abs
-		+transform(rotate(-58deg))
+		abs()
+		transform: rotate(-58deg)
 		white-space: nowrap
 	.moon.name
 		font-size: 75%
@@ -179,17 +179,16 @@ $bg-hgt: 798px
 // Features
 
 #features
-	+abs
+	abs()
 	right: 0
 	bottom: 0
 	left: 0
-	$width: 70px
-	$height: 65px
-	height: $height
+	width = 70px
+	height: 65px
 	background-color: rgba(black, 0.5)
 	ul
 		margin: 0
-		margin-right: $width
+		margin-right: width
 		text-align: right
 	li
 		position: relative
@@ -197,7 +196,7 @@ $bg-hgt: 798px
 		margin: 0 0.75em
 		cursor: pointer
 		
-		+spritesheet(url('../images/layout/Featuresheet.png'), $width, $height, 7, 2)
+		spritesheet(url('../images/layout/Featuresheet.png'), width, @height, 7, 2)
 		// highlight
 		&.r2
 			bottom: 20px
@@ -208,53 +207,53 @@ $bg-hgt: 798px
 		> div
 			position: absolute
 			left: 0 // set by script
-			bottom: $height + 5
+			bottom: @height + 5
 			display: none
 			white-space: nowrap
 
-/* Overlay zum Abdecken der Planeten
+// Overlay zum Abdecken der Planeten
 
 #feature-overlay
-	+abs-fill
+	abs-fill()
 	//background: transparent; <- nicht IE-kompatibel
 	background: rgba(0, 0, 0, 0)
 
 // Feature: Habitable Zone
 
 #habzone
-	+abs
+	abs()
 	top: 0
 	bottom: 0
 	.inner
-		+abs-fill
+		abs-fill()
 		right: 82px
 		left: 79px
 		background-color: rgba(30, 34, 70, 0.09)
 	.right
-		+abs
+		abs()
 		right: 0
 
 // Feature: Sonnenwind
 
 #solwind
-	+abs-fill
+	abs-fill()
 	background-repeat: no-repeat
 	background-image: url(../images/features/solwind.png)
 
 // Feature: Temperatur
 
 #temperature
-	+abs-fill
+	abs-fill()
 	> img
-		+abs
+		abs()
 		left: 8%
 		top: 115px
 	> div
-		+abs-fill
+		abs-fill()
 		background-image: url(../images/features/Temp_Gradient.svg)
 		background-size: 100% 100%
 		> div
-			+abs-fill
+			abs-fill()
 			left: -50px
 			width: 50px
 			background-image: url(../images/features/Temp_Left.svg)
@@ -263,20 +262,19 @@ $bg-hgt: 798px
 // Feature: Sonnen
 
 #suns
-	+abs
+	abs()
 	top: 150px
 	left: 0
 	right: 0
 	margin: auto
 	width: 625px
 	height: 450px
-	$bradius: 15px
-	border-radius: $bradius
+	border-radius: 15px
 	border: 1px solid #1f1f1f
 	background-color: black
 	overflow: hidden
 	.left, .right
-		+abs
+		abs()
 		top: 0
 		bottom: 0
 		width: 61px
@@ -284,48 +282,48 @@ $bg-hgt: 798px
 		&:hover
 			background-color: rgba(white, 0.3)
 	.left
-		border-top-left-radius: $bradius
-		border-bottom-left-radius: $bradius
+		border-top-left-radius: @border-radius
+		border-bottom-left-radius: @border-radius
 		background-image: url(../images/features/suns_arrow_left.png)
 	.right
 		right: 0
-		border-top-right-radius: $bradius
-		border-bottom-right-radius: $bradius
+		border-top-right-radius: @border-radius
+		border-bottom-right-radius: @border-radius
 		background-image: url(../images/features/suns_arrow_right.png)
 	.slider
-		+abs-fill
-		border-radius: $bradius
+		abs-fill()
+		border-radius: @border-radius
 		background-repeat: no-repeat
 
 // Feature: Missionen
 
 #missionshint
-	+abs
+	abs()
 	width: 200px
 	top: 100px
 	right: 50px
-	$color: rgba(128, 128, 128, 0.6)
-	background-color: $color
+	color = rgba(128, 128, 128, 0.6)
+	background-color: color
 	padding: 10px
 	border-radius: 20px
-	box-shadow: 0 0 5px 5px $color
+	box-shadow: 0 0 5px 5px color
 	h1
 		margin-top: 0
 		font-style: italic
 
 .missions
-	+abs
+	abs()
 	top: 150px
-	$wdt: 300px
-	margin-left: -$wdt/2
-	width: $wdt
+	wdt = 300px
+	margin-left: -(wdt/2)
+	width: wdt
 	max-height: 400px
 	padding: 10px
 	background-color: rgba(black, 0.85)
 	border: 1px solid #353537
 	
 	a.close
-		+abs
+		abs()
 		top: 20px
 		right: 25px
 	.nano
@@ -336,32 +334,30 @@ $bg-hgt: 798px
 		li
 			margin-bottom: 5px
 			.flag
-				$wdt: 21px
-				$hgt: 16px
 				display: inline-block
 				margin-right: 5px
 				vertical-align: middle
-				width: $wdt
-				height: $hgt
+				width: 21px
+				height: 16px
 				background-image: url(../images/layout/Missionflags.png)
 				&.eu
-					+flagsheet(0, 0, $wdt, $hgt)
+					flagsheet(0, 0, @width, @height)
 				&.su
-					+flagsheet(0, 1, $wdt, $hgt)
+					flagsheet(0, 1, @width, @height)
 				&.in
-					+flagsheet(0, 2, $wdt, $hgt)
+					flagsheet(0, 2, @width, @height)
 				&.uk
-					+flagsheet(0, 3, $wdt, $hgt)
+					flagsheet(0, 3, @width, @height)
 				&.ug
-					+flagsheet(0, 4, $wdt, $hgt)
+					flagsheet(0, 4, @width, @height)
 				&.us
-					+flagsheet(1, 0, $wdt, $hgt)
+					flagsheet(1, 0, @width, @height)
 				&.jp
-					+flagsheet(1, 1, $wdt, $hgt)
+					flagsheet(1, 1, @width, @height)
 				&.cn
-					+flagsheet(1, 2, $wdt, $hgt)
+					flagsheet(1, 2, @width, @height)
 				&.de
-					+flagsheet(1, 3, $wdt, $hgt)
+					flagsheet(1, 3, @width, @height)
 	p
 		font-size: 75%
 		span
@@ -378,7 +374,7 @@ $bg-hgt: 798px
 // Planetendetail
 
 .planetdetail
-	+abs
+	abs()
 	top: 150px
 	height: 455px
 	left: 0
@@ -386,12 +382,11 @@ $bg-hgt: 798px
 	margin: auto
 	width: 950px
 	background-color: rgba(0, 0, 0, 0.85)
-	$bradius: 15px
-	border-radius: $bradius
-	$rwidth: 60px
+	border-radius: 15px
+	rwidth = 60px
 	> .left
-		+abs-fill
-		right: $rwidth
+		abs-fill()
+		right: rwidth
 		> .tabs
 			position: relative
 			width: 100%
@@ -400,7 +395,7 @@ $bg-hgt: 798px
 			background-color: #811616
 			background-image: url('../images/layout/tabbg.png')
 			background-repeat: repeat-x
-			border-top-left-radius: $bradius
+			border-top-left-radius: @border-radius
 			> ul
 				margin: 0
 				padding: 0
@@ -410,9 +405,8 @@ $bg-hgt: 798px
 			.tab
 				position: relative
 				display: inline-block
-				$hgt: 35px
-				height: $hgt
-				line-height: $hgt
+				height: 35px
+				line-height: @height
 				list-style-type: none
 				white-space: nowrap
 				text-align: center
@@ -421,22 +415,22 @@ $bg-hgt: 798px
 				outline: none
 				&:first-child
 					// weird space
-					+abs
+					abs()
 					left: 0
-					border-top-left-radius: $bradius
+					border-top-left-radius: @border-radius
 					a
 						width: 105%
-						border-top-left-radius: $bradius
+						border-top-left-radius: @border-radius
 				a
 					&.fill
-						+abs-fill
+						abs-fill()
 					&:hover
 						background-color: rgba(white, 0.2)
 		> .content
-			+abs-fill
+			abs-fill()
 			top: 2.5em
 			> .text
-				+abs
+				abs()
 				top: 25px
 				right: 550px
 				bottom: 1em
@@ -447,7 +441,7 @@ $bg-hgt: 798px
 						margin-top: 0
 			// Bildbereich
 			> .image
-				+abs
+				abs()
 				top: 0
 				right: 0
 				bottom: 0
@@ -459,18 +453,18 @@ $bg-hgt: 798px
 						max-height: 100%
 						cursor: pointer
 					.video
-						$v_margin: 30px
+						v_margin = 30px
 						video
-							margin-top: $v_margin
+							margin-top: v_margin
 						.yt
-							+abs
-							top: $v_margin + 5
+							abs()
+							top: v_margin + 5
 							right: 5px
 							opacity: 0
 							&.show
 								opacity: 1
 					.caption
-						+abs
+						abs()
 						right: 0
 						bottom: 35px
 						width: 400px
@@ -482,30 +476,30 @@ $bg-hgt: 798px
 						
 						> div
 							// Flexbox
-							+box
+							box()
 							width: 400px
 							> 
 								div.content
-									+box-flex(1)
+									box-flex: 1
 									padding: 5px 7px
 									max-width: 50%
 								div.line
 									width: 2px
-									+box
-									+box-align(center)
+									box()
+									box-align: center
 									>
 										div
-											//+box-flex(1)
+											//box-flex: 1
 											border-left: 2px solid grey
 											height: 32px
 											margin: 0 10px
 								nav 
-									+box-flex(1)
+									box-flex: 1
 									
-									+box
-									+box-align(center)
+									box()
+									box-align: center
 									> ol
-										+box-flex(1)
+										box-flex: 1
 										margin: 0
 										list-style-type: none
 										text-align: right
@@ -517,9 +511,9 @@ $bg-hgt: 798px
 											
 											cursor: pointer
 											// Spritesheet mit Nummern
-											+spritesheet(url(../images/layout/Numbersheet.png), 24px, 27px, 6, 2)
+											spritesheet(url(../images/layout/Numbersheet.png), 24px, 27px, 6, 2)
 											> div
-												+abs-fill
+												abs-fill()
 												&:hover
 													background-color: rgba(white, 0.2)
 	// Tab: Alle Medien
@@ -537,25 +531,25 @@ $bg-hgt: 798px
 				border-color: grey
 	// Leiste auf der rechten Seite
 	> .rbar
-		width: $rwidth
-		+abs
+		width: rwidth
+		abs()
 		top: 0
 		right: 0
 		bottom: 0
-		border-top-right-radius: $bradius
-		border-bottom-right-radius: $bradius
+		border-top-right-radius: @border-radius
+		border-bottom-right-radius: @border-radius
 		background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9Imc0MTciIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiM1MDUwNTAiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMwQjBCMEIiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2c0MTcpIiAvPgo8L3N2Zz4=')
-		+linear-gradient('top, #505050 0%, #0b0b0b 82%, #0b0b0b 100%')
+		lin-grad: top, #505050 0%, #0b0b0b 82%, #0b0b0b 100%
 		white-space: nowrap
 		h1
-			+transform-origin(center left)
-			+transform(rotate(90deg))
+			transform-origin: center left
+			transform: rotate(90deg)
 			margin: 0
-			+abs
+			abs()
 			top: 0
 			left: 29px
 		a
-			+abs
+			abs()
 			left: 0
 			right: 0
 			bottom: 18px
@@ -563,7 +557,7 @@ $bg-hgt: 798px
 
 // Footer
 #main > footer
-	+abs
+	abs()
 	z-index: 10
 	width: 100%
 	bottom: 0
@@ -585,18 +579,18 @@ $bg-hgt: 798px
 		img
 			vertical-align: middle
 	> #featurefooter
-		$p: 2em
-		padding-left: $p
-		padding-right: $p
+		p = 2em
+		padding-left: p
+		padding-right: p
 		.columns
-			+column-count(2)
+			column-count: 2
 			max-width: 1300px
 			br
-				+column-break-after(always)
+				column-break-after: always
 
-$site-bg: url(../images/layout/EarthHG_1920x1080.jpg)
+site-bg = url(../images/layout/EarthHG_1920x1080.jpg)
 .site
-	background-image: $site-bg 
+	background-image: site-bg 
 	text-shadow: rgba(black, 0.5) 0 0 1px
 	> section
 		margin-right: auto
@@ -607,7 +601,7 @@ $site-bg: url(../images/layout/EarthHG_1920x1080.jpg)
 
 // Versionsübersicht
 #versions
-	@extend .site
+	@extends .site
 	display: table-cell
 	vertical-align: middle
 	> section
@@ -626,7 +620,7 @@ $site-bg: url(../images/layout/EarthHG_1920x1080.jpg)
 
 // Metadata
 #meta
-	@extend .site
+	@extends .site
 	background: none
 	> .bg
 		position: fixed
@@ -635,7 +629,7 @@ $site-bg: url(../images/layout/EarthHG_1920x1080.jpg)
 		bottom: 0
 		left: 0
 		z-index: -1
-		background-image: $site-bg
+		background-image: site-bg
 	> section
 		margin: auto
 		margin-top: 125px

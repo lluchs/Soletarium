@@ -216,16 +216,16 @@ FileList['script/*.coffee'].each do |source|
 	end
 end
 
-desc 'Compiles SASS to CSS'
+desc 'Compiles Stylus to CSS'
 begin
 	style = "#{build('css')}/style.css"
 	task :css => [build('css'), style]
 	file style do
-		sh "sass css/style.sass #{style}"
+		sh "stylus css/style.styl --out #{build 'css'}"
 	end
 
-	FileList['css/*.sass'].each do |sass|
-		file style => sass
+	FileList['css/*.styl'].each do |styl|
+		file style => styl
 	end
 end
 
