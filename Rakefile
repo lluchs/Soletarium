@@ -72,6 +72,7 @@ def jsonTask srcGlob, targetFile, taskSymbol, baseDir = nil
 			# extract yaml
 			if f =~ /\.yaml$/
 				begin
+					puts "Loading file #{f}..."
 					content = YAML::load getContents f
 				rescue
 					# add the file to exceptions
@@ -235,3 +236,5 @@ dirCopyTask 'images/**/*.*', 'images', 'images', :files
 copyTask 'index.html', '', :files
 
 task :default => [:coffee, :css, :lib, :general, :lang, :template, :files, :feed]
+
+# vim: noexpandtab
