@@ -111,8 +111,8 @@ end
 
 desc 'Uploads the build directory to the server'
 task :upload => :default do
-	server, user, password, base = getContents('.sftp').split "\n"
-	Net::SFTP.start(server, user, :password => password) do |sftp|
+	server, port, user, password, base = getContents('.sftp').split "\n"
+	Net::SFTP.start(server, user, :port => port, :password => password) do |sftp|
 		FileList['build/**/*.*'].each do |f|
 			rf = base + f
 			rstat = nil
