@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Soletarium</title>
+	<subtitle>Versionen</subtitle>
+	<link href="http://soletarium.org/feed-de.xml" rel="self" />
+	<link href="http://soletarium.org/#/de/versions" />
+	<id>http://soletarium.org/de/versions</id>
+	<icon>images/layout/favicon.ico</icon>
+	<updated>2012-08-09T13:41:00+02:00</updated>
+	<author>
+		<name>Soletarium-Team</name>
+		<uri>http://soletarium.org/</uri>
+		<email>info@soletarium.org</email>
+	</author>
+	
+	<entry>
+		<title>Version 0.92</title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,2012-08-09:0.92</id>
+		<published>2012-08-09T13:41:00+02:00</published>
+		<updated>2012-08-09T13:41:00+02:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+				<p>+ Jupiter ist jetzt klickbar</p>
+			
+				<p>+ Marssonde Curiosity im Missionsfeature</p>
+			
+				<p>! Jupitersonde Galileo nach Teilerfolg verschoben</p>
+			
+				<p>! Mondsonde Chandrayaan 1 nach Teilerfolg verschoben</p>
+			
+				<p>! Nationalität von Mars Observer behoben</p>
+			
+				<p>! Uranus hat jetzt richtige Größe</p>
+			
+				<p>! kleine Fehler in Text behoben</p>
+			
+		</div></content>
+	</entry>
+	
+	<entry>
+		<title>Version 0.90 Beta</title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,2011-06-02:0.90Beta</id>
+		<published>2011-06-02T01:12:00+02:00</published>
+		<updated>2011-06-02T01:12:00+02:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+				<p>+ Mars ist jetzt klickbar</p>
+			
+				<p>+ neues Bild: Inselgruppe Bahamas (Erde, Übersicht)</p>
+			
+				<p>+ neues Feature: Missionen</p>
+			
+				<p>+ neues Feature: Sonnen</p>
+			
+				<p>+ Albedo, hab. Zone und Sonnenwind haben nun einen erklärenden Text im Footer</p>
+			
+				<p>* sehr viele Texte überarbeitet</p>
+			
+		</div></content>
+	</entry>
+	
+	<entry>
+		<title>Version 0.82a</title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,2011-06-02:0.82a</id>
+		<published>2011-06-02T01:12:00+02:00</published>
+		<updated>2011-06-02T01:12:00+02:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+				<p>! Hintergrund geht jetzt auch in Chrome und Safari</p>
+			
+				<p>! teilweise Fehler im Highlighting der Tabs behoben</p>
+			
+		</div></content>
+	</entry>
+	
+	<entry>
+		<title>Version 0.82</title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,2011-05-31:0.82</id>
+		<published>2011-05-31T16:47:00+02:00</published>
+		<updated>2011-05-31T16:47:00+02:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+				<p>! Feature-Buttons nicht mehr verschoben bei geringer vertikaler Auflösung</p>
+			
+				<p>! erstes Venus Bild jetzt richtig verlinkt</p>
+			
+				<p>+ diese Liste auch als Atom-Feed</p>
+			
+		</div></content>
+	</entry>
+	
+	<entry>
+		<title>Version 0.81</title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,2011-05-22:0.81</id>
+		<published>2011-05-22T23:34:00+02:00</published>
+		<updated>2011-05-22T23:34:00+02:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+				<p>! Beschriftungen der Planeten besser ausgerichtet</p>
+			
+				<p>* diverse Textpassagen verbessert</p>
+			
+				<p>+ neues Bild: Die Venus (Übersicht)</p>
+			
+		</div></content>
+	</entry>
+	
+	<entry>
+		<title>Version 0.8 Alpha</title>
+		<link href="http://soletarium.org/" />
+		<id>tag:soletarium.org,2011-05-14:0.8Alpha</id>
+		<published>2011-05-14T17:26:00+02:00</published>
+		<updated>2011-05-14T17:26:00+02:00</updated>
+		<content type="xhtml"><div xmlns="http://www.w3.org/1999/xhtml">
+			
+				<p>+ erstes Testrelease der Seite mit den Planeten Merkur, Venus und Erde</p>
+			
+				<p>+ Buttonfeatures: Sonnenwind, Temperatur, Albedo und Habitable Zone</p>
+			
+		</div></content>
+	</entry>
+	
+</feed>
