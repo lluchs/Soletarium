@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    execjs (2.6.0)
+    json (1.8.3)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.2)
+    sass (3.4.16)
+    uglifier (2.7.1)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  net-sftp
+  sass
+  uglifier
