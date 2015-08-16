@@ -1,0 +1,18 @@
+- id: Overview
+  title: Übersicht
+  media:
+    - caption: Die Venus
+      desc: hellster Planet am Nachthimmel
+    - caption: Turbulenzen
+      desc: in der äußeren Atmosphäre
+- id: Atmosphere
+  title: Atmosphäre
+  media:
+    - caption: klare Sicht
+      desc: doch der nächste Sturm bahnt sich an
+- id: Missions
+  title: Missionen
+- id: media
+  title: Alle Medien
+- id: FAQ
+  title: Fragen

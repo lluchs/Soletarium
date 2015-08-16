@@ -1,0 +1,16 @@
+- id: Overview
+  title: Übersicht
+  media:
+    - caption: Merkur
+      desc: der Götterbote
+- id: Missions
+  title: Missionen
+  media:
+    - caption: BepiColombo
+      desc: Doppelsonde der ESA/JAXA
+    - caption: Messenger
+      desc: <b>Me</b>rcury <b>S</b>urface, <b>S</b>pace <b>En</b>vironment, <b>Ge</b>ochemistry and <b>R</b>anging
+- id: media
+  title: Alle Medien
+- id: FAQ
+  title: Fragen

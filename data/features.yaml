@@ -1,0 +1,24 @@
+habzone:
+  # Angaben in Prozent
+  x: 7
+  wdt: 11
+solwind:
+  # Offset der Erde in Pixeln
+  offset: {x: 391, y: 333}
+suns:
+  # Anzahl an Bildern
+  num: "8"
+eclipse:
+  # Kreis
+  offset: {x: 227, y: 148}
+  radius: 215
+  # Monde: Offset, Winkel
+  moonl:
+    offset: {x: 112, y: 17}
+    angle: 180
+  moonr:
+    offset: {x: 13, y: 13}
+    angle: 0
+  # Winkel, um den bewegt werden kann (+-)
+  angle: 35
+

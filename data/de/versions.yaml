@@ -1,0 +1,42 @@
+title: Versionen
+versions:
+  - 0.92:
+    - "2012-08-09T13:41:00+02:00"
+    - "+ Jupiter ist jetzt klickbar"
+    - "+ Marssonde Curiosity im Missionsfeature"
+    - "! Jupitersonde Galileo nach Teilerfolg verschoben"
+    - "! Mondsonde Chandrayaan 1 nach Teilerfolg verschoben"
+    - "! Nationalität von Mars Observer behoben"
+    - "! Uranus hat jetzt richtige Größe"
+    - "! kleine Fehler in Text behoben"
+
+  - 0.90 Beta:
+    - "2011-06-02T01:12:00+02:00"
+    - "+ Mars ist jetzt klickbar"
+    - "+ neues Bild: Inselgruppe Bahamas (Erde, Übersicht)"
+    - "+ neues Feature: Missionen"
+    - "+ neues Feature: Sonnen"
+    - "+ Albedo, hab. Zone und Sonnenwind haben nun einen erklärenden Text im Footer"
+    - "* sehr viele Texte überarbeitet"
+    
+  - 0.82a:
+    - "2011-06-02T01:12:00+02:00"
+    - "! Hintergrund geht jetzt auch in Chrome und Safari"
+    - "! teilweise Fehler im Highlighting der Tabs behoben"
+
+  - 0.82:
+    - "2011-05-31T16:47:00+02:00"
+    - "! Feature-Buttons nicht mehr verschoben bei geringer vertikaler Auflösung"
+    - "! erstes Venus Bild jetzt richtig verlinkt"
+    - + diese Liste auch als Atom-Feed
+    
+  - 0.81:
+    - "2011-05-22T23:34:00+02:00"
+    - "! Beschriftungen der Planeten besser ausgerichtet"
+    - "* diverse Textpassagen verbessert"
+    - "+ neues Bild: Die Venus (Übersicht)"
+
+  - 0.8 Alpha:
+    - "2011-05-14T17:26:00+02:00"
+    - + erstes Testrelease der Seite mit den Planeten Merkur, Venus und Erde
+    - "+ Buttonfeatures: Sonnenwind, Temperatur, Albedo und Habitable Zone"

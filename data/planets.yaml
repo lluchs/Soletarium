@@ -1,0 +1,57 @@
+- id: Mercury
+  offset: {x: 12, y: 13}
+  xpos: 0
+  caption: {x: -3, y: -33}
+  
+- id: Venus
+  offset: {x: 17, y: 17}
+  xpos: 6
+  caption: {x: -1, y: -30}
+
+- id: Earth
+  offset: {x: 18, y: 17}
+  xpos: 11
+  caption: {x: 3, y: -25}
+  moons:
+    - caption: {x: 25, y: 1}
+
+- id: Mars
+  offset: {x: 14, y: 15}
+  xpos: 19
+  caption: {x: -1, y: -25}
+
+- id: Jupiter
+  offset: {x: 138, y: 224}
+  xpos: 35
+  caption: {x: 118, y: 87}
+  moons:
+    - caption: {x: 267, y: -20}
+    - caption: {x: 194, y: 89}
+    - caption: {x: 57, y: 340}
+    - caption: {x: 6, y: 397}
+
+- id: Saturn
+  offset: {x: 173, y: 231}
+  xpos: 57 
+  caption: {x: 160, y: 90}
+  moons:
+    - caption: {x: 319, y: 10}
+    - caption: {x: 285, y: 55}
+    - caption: {x: 248, y: 105}
+    - caption: {x: 110, y: 300}
+    - caption: {x: 76, y: 367}
+    - caption: {x: 45, y: 422}
+
+- id: Uranus
+  offset: {x: 110, y: 46}
+  xpos: 85
+  caption: {x: 29, y: -38}
+  moons:
+    - caption: {x: 60, y: -25} # Oberon
+
+- id: Neptune
+  offset: {x: 41, y: 57}
+  xpos: 93
+  caption: {x: 20, y: -20}
+  moons:
+    - caption: {x: 61, y: -21}

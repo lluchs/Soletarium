@@ -1,0 +1,26 @@
+- id: Overview
+  title: Übersicht
+  media:
+    - caption: Mars
+      desc: der rote Planet
+- id: Atmosphere
+  title: Atmosphäre
+  media:
+    - caption: Olympus Mons
+      desc: höchster Berg im System
+- id: Moons
+  title: Mond
+  media:
+    - caption: Phobos
+      desc: 27km großer Mond
+- id: Missions
+  title: Missionen
+  media:
+    - caption: Mariner 9
+      desc: über dem Valles Marineris
+    - caption: Mars Odyssey
+      desc: orbitale Wünschelrute
+- id: media
+  title: Alle Medien
+- id: FAQ
+  title: Fragen

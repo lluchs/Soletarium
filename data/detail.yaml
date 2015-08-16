@@ -1,0 +1,85 @@
+all:
+  Overview:
+    color: "#811616"
+  Atmosphere:
+    color: "#174580"
+  Moons:
+    color: "#4c4c4c"
+  Missions:
+    color: "#815116"
+  FAQ:
+    color: "#511681"
+  media:
+    color: "#608116"
+  
+planets:
+  Mercury:
+    Overview:
+      media:
+        - auto: Overview_1
+    Missions:
+      media:
+        - auto: Missions_1
+          nohr: true
+        - auto: Missions_3
+          nohr: true
+  Venus:
+    Overview:
+      media:
+        - auto: Overview_1
+          nohr: true
+        - auto: Overview_2
+    Atmosphere:
+      media:
+        - auto: Atmosphere_1
+  Earth:
+    Overview:
+      media:
+        - auto: Overview_1
+        - auto: Overview_2
+        - auto: Overview_3
+        - auto: Overview_4
+        - video: Sunrise
+          yt: kww-5QvllXk
+    Atmosphere:
+      media:
+        - auto: Atmosphere_1
+        - auto: Atmosphere_2
+    Moons:
+      media:
+        - auto: Moons_1
+    Missions:
+      media:
+        - auto: Missions_1
+        - auto: Missions_2
+        
+  Mars:
+    Overview:
+      media:
+        - auto: Overview_1
+    Atmosphere:
+      media:
+        - auto: Atmosphere_1
+    Moons:
+      media:
+        - auto: Moons_1
+    Missions:
+      media:
+        - auto: Missions_1
+        - auto: Missions_2
+          nohr: true
+          
+  Jupiter:
+    Overview:
+      media:
+        - auto: Overview_1
+        - auto: Overview_2
+    Atmosphere:
+      media:
+    Moons:
+      media:
+        - auto: Moons_1
+    Missions:
+      media:
+          
+  

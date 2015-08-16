@@ -1,0 +1,21 @@
+- id: Overview
+  title: Übersicht
+  media:
+    - caption: Der Jupiter
+      desc: größter Planet im Sonnensystem
+    - caption: Was wäre wenn?
+      desc: Jupiter dieselbe Distanz wie unser Mond hätte?
+- id: Atmosphere
+  title: Atmosphäre
+- id: Moons
+  title: Monde
+  media:
+    - caption: Europa
+      desc: zerfurchter Eisplanet
+  title: Mond
+- id: Missions
+  title: Missionen
+- id: media
+  title: Alle Medien
+- id: FAQ
+  title: Fragen

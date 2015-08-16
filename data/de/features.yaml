@@ -1,0 +1,14 @@
+- id: suns
+  title: Sonnen
+- id: missions
+  title: Missionen
+- id: habzone
+  title: Habitable Zone
+- id: albedo
+  title: Albedo
+- id: temperature
+  title: Temperatur
+- id: solwind
+  title: Sonnenwind
+- id: standard
+  title: Standard

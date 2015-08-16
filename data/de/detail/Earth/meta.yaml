@@ -1,0 +1,38 @@
+- id: Overview
+  title: Übersicht
+  media:
+    - caption: Die Erde
+      desc: der blaue Planet
+    - caption: Die Erde
+      desc: Australien und Südostasien
+    - caption: Inselgruppe Bahamas
+      desc: Inselstaat im Nordatlantik
+    - caption: Die groẞen Seen
+      desc: aus der Sicht eines Astronauten
+    - caption: Sonnenaufgang
+      desc: im Erdorbit
+- id: Atmosphere
+  title: Atmosphäre
+  media:
+    - caption: Atmosphärenaufbau
+      smallcaption: Atmosphären-<br>aufbau
+      desc: unser Schutzschild
+    - caption: Der Wasserkreislauf
+      smallcaption: der Wasser-<br>kreislauf
+      desc: unser Lebenselixier
+- id: Moons
+  title: Mond
+  media:
+    - caption: Der Mond
+      desc: Sprungbrett zu anderen Planeten?
+- id: Missions
+  title: Missionen
+  media:
+    - caption: Das Hubble-Teleskop
+      desc: unser Auge zu den Sternen
+    - caption: Die ISS
+      desc: <b>I</b>nternational <b>S</b>pace <b>S</b>tation
+- id: media
+  title: Alle Medien
+- id: FAQ
+  title: Fragen

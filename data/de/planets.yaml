@@ -1,0 +1,26 @@
+- name: ☿ Merkur
+- name: ♀ Venus
+- name: ♁ Erde
+  moons:
+    - name: Mond
+- name: ♂ Mars
+- name: ♃ Jupiter
+  moons:
+    - name: Kallisto
+    - name: Ganymed
+    - name: Io
+    - name: Europa
+- name: ♄ Saturn
+  moons:
+    - name: Rhea
+    - name: Dione
+    - name: Mimas
+    - name: Enceladus
+    - name: Iapetus
+    - name: Titan
+- name: ♅ Uranus
+  moons:
+    - name: Oberon
+- name: ♆ Neptun
+  moons:
+    - name: Triton
