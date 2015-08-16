@@ -1,6 +1,5 @@
 /build/
 /*.jar
-/images/
 /.sass-cache/
 /servefiles.rb
 /*.lnk
